@@ -6,7 +6,7 @@ import {
   Output,
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject, ReplaySubject, Subject } from 'rxjs';
 import { ILoginData } from '../../interfaces/login-interface';
 import { UserService } from '../../services/user.service';
 
@@ -18,13 +18,11 @@ import { UserService } from '../../services/user.service';
 })
 export class LoginComponent {
   @Output() logIn = new EventEmitter<ILoginData>();
-  public loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
-    false
-  );
-  public loginCta: Subject<boolean> = new Subject();
+  public logInError: ReplaySubject<boolean> = new ReplaySubject();
+  // public errorOccured: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   ngOnInit(): void {
-    this.loggedIn = this.userService.loggedIn;
+    this.logInError = this.userService.logInError;
   }
 
   constructor(private userService: UserService) {}
@@ -38,9 +36,9 @@ export class LoginComponent {
 
   public onLogin() {
     this.logIn.emit(this.loginForm.getRawValue() as ILoginData);
-    setTimeout(() => {
-      this.loginCta.next(true);
-    }, 100);
+    // setTimeout(() => {
+    //   this..next(false);
+    // }, 100);
   }
 
   get email() {

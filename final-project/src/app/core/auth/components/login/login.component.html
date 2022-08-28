@@ -13,14 +13,10 @@
    
   
     <button (click)="onLogin()" [disabled]="loginForm.invalid">Log in</button>
-    <ng-container *ngIf="loginCta | async">
-        <ng-container *ngIf="loggedIn | async; else error">
-            <h3>Successful Login</h3>
-        </ng-container>
+    <ng-container *ngIf="logInError | async">
+            <h3>Invalid Email or Password</h3>
     </ng-container>
 
-    <ng-template #error>
-       <h3>Invalid Email or Password</h3>
-    </ng-template>
+   
    
   </form>

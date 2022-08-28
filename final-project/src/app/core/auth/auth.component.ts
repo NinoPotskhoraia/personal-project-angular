@@ -39,6 +39,7 @@ export class AuthComponent {
             this.router.navigateByUrl('/hero');
             return;
           }
+          this.userService.logInError.next(true);
         })
       )
       .subscribe();

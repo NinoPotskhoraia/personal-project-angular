@@ -9,6 +9,7 @@ import {
   map,
   catchError,
   of,
+  ReplaySubject,
 } from 'rxjs';
 import { IUser } from '../interfaces/user-interface';
 import { ILoginData } from '../interfaces/login-interface';
@@ -20,11 +21,10 @@ export class UserService {
   constructor(private http: HttpClient, private router: Router) {}
   private loggedInSubject = new BehaviorSubject<IUser | null>(null);
   loggedInUser = this.loggedInSubject.pipe(shareReplay(1));
-  loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  logInError: ReplaySubject<boolean> = new ReplaySubject<boolean>();
 
   logIn(user: IUser) {
     this.loggedInSubject.next(user);
-    this.loggedIn.next(true);
   }
 
   logOut() {
