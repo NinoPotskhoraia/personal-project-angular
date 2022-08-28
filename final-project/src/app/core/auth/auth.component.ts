@@ -36,7 +36,7 @@ export class AuthComponent {
         tap((res) => {
           if (res) {
             this.userService.logIn(res);
-            // this.router.navigateByUrl('/');
+            this.router.navigateByUrl('/hero');
             return;
           }
         })
