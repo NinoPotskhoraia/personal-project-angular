@@ -1,0 +1,46 @@
+<form [formGroup]="regForm">
+    <label for="name">Full Name</label>
+    <input type="text" id="name" placeholder="Full Name" formControlName="name" required >
+    <ng-container *ngIf="name?.invalid && (name?.touched)">
+        <p> Name is required. </p>
+     </ng-container >
+  
+    <label for="email">Email</label>
+    <input type="email" id="email" placeholder="email" formControlName="email" required>
+    <ng-container *ngIf="email?.errors?.['reguired']">
+        <p>Please type in your email address</p>
+    </ng-container>
+    <ng-container *ngIf="email?.invalid && (email?.touched)">
+        <p>Please type in valid email address</p>
+    </ng-container>
+
+    <label for="password">Password</label>
+    <input type="password" id="password" placeholder="password" formControlName="password" required>
+    <ng-container *ngIf="password?.errors?.['reguired']">
+        <p>Please type in your new password</p>
+    </ng-container>
+    <ng-container *ngIf="(password?.touched) && password?.invalid">
+        <p>Error: Password should contain at least 6 digits</p>
+    </ng-container>
+
+    <label for="confirmm">Confirm Password</label>
+    <input type="password" id="confrim" name="confirm" placeholder="Confirm Password" formControlName="confirm" required>
+    <ng-container *ngIf=" confirm?.touched && regForm.errors">
+        <p>Passwords don't match, please try again</p>
+    </ng-container>
+
+    <label for="age">Age</label>
+    <input type="number" id="age" name="age" placeholder="Age" formControlName="age" required>
+    <ng-container *ngIf=" age?.touched && age?.invalid">
+        <p>Please type in your age</p>
+    </ng-container>
+
+    <label for="job">Occupation (If you are not currenctly employeed please type in 'none')</label>
+    <input type="text" id="job" name="job" placeholder="occupation" formControlName="job">
+
+    <input formControlName="check" id="agreement" type="checkbox" required>
+    <label for="agreement">I have read the agreement</label>
+   
+  
+    <button [disabled]="regForm.invalid" (click)="onRegister()">Register</button>
+  </form>
