@@ -21,6 +21,13 @@ const routes: Routes = [
     canLoad: [AuthorizedGuard],
   },
   {
+    path: 'todo',
+    loadChildren: () =>
+      import('./features/todoList/to-do-list.module').then(
+        (m) => m.ToDoListModule
+      ),
+  },
+  {
     path: '**',
     component: PageNotFoundComponent,
   },
