@@ -1,4 +1,12 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnInit,
+} from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { ITask } from '../../interfaces/to-do-list-interface';
+import { ToDoListService } from '../../services/to-do-list.service';
 
 @Component({
   selector: 'app-completed',
@@ -7,7 +15,15 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CompletedComponent implements OnInit {
-  constructor() {}
+  constructor(private todoService: ToDoListService) {}
 
-  ngOnInit(): void {}
+  @Input() completedTasks: BehaviorSubject<ITask[]> = new BehaviorSubject(
+    [] as ITask[]
+  );
+
+  completed = new BehaviorSubject(false);
+
+  ngOnInit(): void {
+    this.completed = this.todoService.completed;
+  }
 }

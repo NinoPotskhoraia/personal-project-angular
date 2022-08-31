@@ -1,1 +1,5 @@
-<p>completed works!</p>
+
+<h1 *ngIf="completed | async">Completed Tasks:</h1>
+<ng-container *ngFor="let task of completedTasks | async">
+   <p>{{task.description}}</p>
+</ng-container>
