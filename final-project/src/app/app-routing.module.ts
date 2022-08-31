@@ -26,6 +26,13 @@ const routes: Routes = [
       import('./features/todoList/to-do-list.module').then(
         (m) => m.ToDoListModule
       ),
+    canLoad: [AuthorizedGuard],
+  },
+  {
+    path: 'chart',
+    loadChildren: () =>
+      import('./features/smForm/sm.module').then((m) => m.SmModule),
+    canLoad: [AuthorizedGuard],
   },
   {
     path: '**',

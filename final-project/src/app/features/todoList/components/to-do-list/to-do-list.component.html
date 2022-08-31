@@ -12,7 +12,7 @@
         <button (click)="onAddClick()">Add</button>
     </ng-template>
 
-    <input type="text" [formControl]="description" placeholder="type in your goal">
+    <input type="text" [formControl]="description" placeholder="type in your goals for today">
 
    
 </div>
@@ -32,5 +32,7 @@
 >
     
 </app-completed>
+
+<a routerLink="/chart">Go to your SM chart</a>
 
 
