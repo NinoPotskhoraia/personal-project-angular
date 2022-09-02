@@ -1,0 +1,16 @@
+{
+  "users": [
+    {
+      "name": "Nino Potskhoraia",
+      "email": "nino.potskhoraia17@gmail.com",
+      "age": 25,
+      "password": "1234567",
+      "confirm": "1234567",
+      "job": "doctor",
+      "check": true,
+      "id": 1
+    }
+  ],
+  "tasks": [],
+  "workouts": []
+}

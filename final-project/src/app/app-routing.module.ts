@@ -35,6 +35,12 @@ const routes: Routes = [
     canLoad: [AuthorizedGuard],
   },
   {
+    path: 'pa',
+    loadChildren: () =>
+      import('./features/paLog/pa.module').then((m) => m.PAModule),
+    // canLoad: [AuthorizedGuard],
+  },
+  {
     path: '**',
     component: PageNotFoundComponent,
   },

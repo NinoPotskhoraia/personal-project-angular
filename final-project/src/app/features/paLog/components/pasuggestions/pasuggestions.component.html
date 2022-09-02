@@ -1,0 +1,57 @@
+<ng-container *ngIf="choosing | async; else approved">
+
+<h1>Choose your goal for physical activity and get the routine planned by our highly qualified experts</h1>
+
+<article class="aerobic">
+    <button (click)="onAerobicClick()">Improved Heart and Lung Health</button>
+  
+</article>
+
+<article class="weight-loss">
+    <button (click)="onWeightLossClick()">Weight Loss</button>
+  
+</article>
+
+<article class="strength">
+    <button (click)="onStrengthClick()">Increased Strength and Stamina</button>
+    
+</article>
+
+<article class="flexibility">
+    <button (click)="onFlexibilityClick()">Increased Flexibility and Joint Health</button>
+   
+</article>
+
+<article class="mental-health">
+    <button (click)="onMentalHealthClick()">Improved Mental Health</button>
+   
+</article>
+
+
+
+
+    <ng-container *ngIf="suggestion | async">
+        <h2>We Suggest following workout routine:</h2>
+       <ul *ngFor="let routine of paRoutine | async">
+        <li>{{routine.activity}} for {{routine.duration}} {{routine.timeUnit}}</li>
+       </ul>
+
+       <button (click)="onApprove()">Approve</button>
+    </ng-container>
+
+    <h2>Or Create your own plan for the day:</h2>
+</ng-container>
+
+<ng-template #approved>
+    <h1>Your Workout Routine for the day is:</h1>
+    <ul *ngFor="let routine of paRoutine | async">
+        <li>{{routine.activity}} {{routine.duration}} {{routine.timeUnit}}</li>
+       </ul>
+</ng-template>
+
+
+
+
+
+
+
