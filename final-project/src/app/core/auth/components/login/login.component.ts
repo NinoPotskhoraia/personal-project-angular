@@ -19,7 +19,6 @@ import { UserService } from '../../services/user.service';
 export class LoginComponent {
   @Output() logIn = new EventEmitter<ILoginData>();
   public logInError: ReplaySubject<boolean> = new ReplaySubject();
-  // public errorOccured: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   ngOnInit(): void {
     this.logInError = this.userService.logInError;
@@ -36,9 +35,6 @@ export class LoginComponent {
 
   public onLogin() {
     this.logIn.emit(this.loginForm.getRawValue() as ILoginData);
-    // setTimeout(() => {
-    //   this..next(false);
-    // }, 100);
   }
 
   get email() {

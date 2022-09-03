@@ -1,7 +1,7 @@
-import { ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, OnDestroy } from '@angular/core';
 import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { BehaviorSubject, Subject, tap } from 'rxjs';
+import { BehaviorSubject, Subscription, tap } from 'rxjs';
 import { ITask, ITaskValue } from '../../interfaces/to-do-list-interface';
 import { ToDoListService } from '../../services/to-do-list.service';
 
@@ -11,8 +11,10 @@ import { ToDoListService } from '../../services/to-do-list.service';
   styleUrls: ['./to-do-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ToDoListComponent {
+export class ToDoListComponent implements OnDestroy {
   constructor(private todoService: ToDoListService) {}
+
+  subscriptions: Subscription[] = [];
 
   description = new FormControl('', Validators.required);
   tasksSubject: BehaviorSubject<ITask[]> = new BehaviorSubject([] as ITask[]);
@@ -28,15 +30,19 @@ export class ToDoListComponent {
   }
 
   public onAddClick() {
-    this.todoService
-      .postTask({ description: this.desc } as ITaskValue)
-      .subscribe();
+    this.subscriptions.push(
+      this.todoService
+        .postTask({ description: this.desc } as ITaskValue)
+        .subscribe()
+    );
 
     setTimeout(() => {
-      this.todoService
-        .getTasks()
-        .pipe(tap((res) => this.tasksSubject.next(res)))
-        .subscribe();
+      this.subscriptions.push(
+        this.todoService
+          .getTasks()
+          .pipe(tap((res) => this.tasksSubject.next(res)))
+          .subscribe()
+      );
       this.description.reset();
     }, 100);
   }
@@ -48,14 +54,18 @@ export class ToDoListComponent {
 
   update() {
     let updatedTask = { description: this.desc } as ITask;
-    this.todoService
-      .updateTask(updatedTask as ITask, this.selectedTaskId.value)
-      .subscribe();
-    setTimeout(() => {
+    this.subscriptions.push(
       this.todoService
-        .getTasks()
-        .pipe(tap((res) => this.tasksSubject.next(res)))
-        .subscribe();
+        .updateTask(updatedTask as ITask, this.selectedTaskId.value)
+        .subscribe()
+    );
+    setTimeout(() => {
+      this.subscriptions.push(
+        this.todoService
+          .getTasks()
+          .pipe(tap((res) => this.tasksSubject.next(res)))
+          .subscribe()
+      );
       this.description.reset();
       this.updating.next(false);
     }, 200);
@@ -64,10 +74,12 @@ export class ToDoListComponent {
   delete(id: number) {
     this.todoService.deleteTask(id).subscribe();
     setTimeout(() => {
-      this.todoService
-        .getTasks()
-        .pipe(tap((res) => this.tasksSubject.next(res)))
-        .subscribe();
+      this.subscriptions.push(
+        this.todoService
+          .getTasks()
+          .pipe(tap((res) => this.tasksSubject.next(res)))
+          .subscribe()
+      );
     }, 200);
   }
 
@@ -85,7 +97,9 @@ export class ToDoListComponent {
     this.status.next(
       (this.tasksSubject.value.length / this.completedTasks.value.length) * 100
     );
-    console.log(this.tasksSubject.value.length);
-    console.log(this.completedTasks.value.length);
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach((element) => element.unsubscribe());
   }
 }

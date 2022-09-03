@@ -24,26 +24,28 @@ export class PAFormComponent implements OnInit {
   @Output() customWorkout = new EventEmitter<IPlan[]>();
 
   ngOnInit(): void {
-    // this.choosing = this.paService.choosing;
+    this.editing = this.paService.editing;
+    this.choosing = this.paService.choosing;
   }
 
-  // choosing = new BehaviorSubject(true);
+  choosing = new BehaviorSubject(true);
   editing = new BehaviorSubject(true);
+  done = new BehaviorSubject(false);
 
   aerobicsForm = new FormGroup({
     activity: new FormControl('', Validators.required),
-    duration: new FormControl('', Validators.required),
-    timeUnit: new FormControl('', Validators.required),
+    duration: new FormControl(''),
+    timeUnit: new FormControl(''),
   });
   resistanceForm = new FormGroup({
     activity: new FormControl('', Validators.required),
-    duration: new FormControl('', Validators.required),
-    timeUnit: new FormControl('', Validators.required),
+    duration: new FormControl(''),
+    timeUnit: new FormControl(''),
   });
   flexibilityForm = new FormGroup({
     activity: new FormControl('', Validators.required),
-    duration: new FormControl('', Validators.required),
-    timeUnit: new FormControl('', Validators.required),
+    duration: new FormControl(''),
+    timeUnit: new FormControl(''),
   });
 
   public onConfirm() {
@@ -58,13 +60,15 @@ export class PAFormComponent implements OnInit {
     }
     this.customWorkout.emit(this.arr);
     this.editing.next(false);
+    this.done.next(true);
     this.aerobicsForm.reset();
     this.resistanceForm.reset();
     this.flexibilityForm.reset();
-    console.log(this.arr);
+    console.log(this.aerobicsForm);
   }
 
   public onAddClick() {
     this.editing.next(true);
+    this.done.next(false);
   }
 }

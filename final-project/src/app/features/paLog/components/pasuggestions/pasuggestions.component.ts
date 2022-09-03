@@ -20,6 +20,8 @@ export class PASuggestionsComponent implements OnInit {
 
   suggestion = new BehaviorSubject(false);
   choosing = new BehaviorSubject(true);
+  editing = new BehaviorSubject(true);
+
   paRoutine: BehaviorSubject<IPlan[]> = new BehaviorSubject([] as IPlan[]);
 
   @Output() aerobics = new EventEmitter();

@@ -38,7 +38,7 @@ const routes: Routes = [
     path: 'pa',
     loadChildren: () =>
       import('./features/paLog/pa.module').then((m) => m.PAModule),
-    // canLoad: [AuthorizedGuard],
+    canLoad: [AuthorizedGuard],
   },
   {
     path: '**',

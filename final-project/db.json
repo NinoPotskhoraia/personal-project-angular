@@ -11,6 +11,11 @@
       "id": 1
     }
   ],
-  "tasks": [],
+  "tasks": [
+    {
+      "description": "read",
+      "id": 2
+    }
+  ],
   "workouts": []
 }

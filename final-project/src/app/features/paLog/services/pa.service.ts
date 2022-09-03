@@ -11,6 +11,7 @@ export class PaService {
   paRoutine: BehaviorSubject<IPlan[]> = new BehaviorSubject([] as IPlan[]);
 
   choosing = new BehaviorSubject(true);
+  editing = new BehaviorSubject(true);
 
   Aerobic() {
     this.paRoutine.next(this.cardio);
@@ -35,10 +36,12 @@ export class PaService {
   CustomWorkout(routine: IPlan[]) {
     this.paRoutine.next(routine);
     this.choosing.next(false);
+    this.editing.next(false);
   }
 
   Approve() {
     this.choosing.next(false);
+    this.editing.next(false);
   }
 
   cardio: IPlan[] = [

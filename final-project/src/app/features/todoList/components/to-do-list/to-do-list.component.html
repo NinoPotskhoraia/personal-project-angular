@@ -9,10 +9,13 @@
         <button (click)="update()">update</button>
     </ng-container>
     <ng-template #add>
-        <button (click)="onAddClick()">Add</button>
+        <button [disabled]="description.invalid" (click)="onAddClick()">Add</button>
     </ng-template>
 
     <input type="text" [formControl]="description" placeholder="type in your goals for today">
+    <ng-container *ngIf="description?.invalid && (description?.touched)">
+        <p>Please type in short description of the activity you would like to accomplish today</p>
+    </ng-container>
 
    
 </div>

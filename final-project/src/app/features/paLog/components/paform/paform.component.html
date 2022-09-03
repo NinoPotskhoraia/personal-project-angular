@@ -1,70 +1,75 @@
-<ng-container *ngIf="editing | async; else edit">
-    <form>
-        <div [formGroup]="aerobicsForm">
-            <label for="aerobic">Aerobic Exercise</label>
-            <select formControlName="activity" name="aerobic-exercise" id="aerobic">
-                <option value="walking">Walking</option>
-                <option value="jogging">Jogging/Running</option>
-                <option value="swimming">Swimming</option>
-                <option value="cycling">Cycling</option>
-              </select>
-            <label for="duration">Duration</label>
-            <input type="text" id="duration" formControlName="duration">
-            <select name="unit" formControlName="timeUnit">
-                <option value="minutes">Minutes</option>
-                <option value="hout">Hour</option>
-            </select>
-        </div>
+<ng-container *ngIf="editing | async">
+            <ng-container>
+                <div [formGroup]="aerobicsForm">
+                    <label for="aerobic">Aerobic Exercise</label>
+                    <select formControlName="activity" name="aerobic-exercise" id="aerobic">
+                        <option value="walking">Walking</option>
+                        <option value="jogging">Jogging/Running</option>
+                        <option value="swimming">Swimming</option>
+                        <option value="cycling">Cycling</option>
+                      </select>
+                    <label for="duration">Duration</label>
+                    <input type="text" id="duration" formControlName="duration">
+                    <select name="unit" formControlName="timeUnit">
+                        <option value="minutes">Minutes</option>
+                        <option value="hout">Hour</option>
+                    </select>
+                </div>
+                <ng-container *ngIf="aerobicsForm.touched && aerobicsForm.invalid">
+                   <p>please choose desirable activity</p>
+                </ng-container>
+
+                  <div [formGroup]="resistanceForm">
+                      <label for="strength">Strength (resistance) Exercise</label>
+                      <select formControlName="activity" name="aerobic-exercise" id="strength">
+                          <option value="weights">Free Weights</option>
+                          <option value="pushups">Pushups</option>
+                          <option value="situps">Sit-ups</option>
+                          <option value="lunges">lunges</option>
+                          <option value="squats">Squats</option>
+                          <option value="stepups">Step-ups</option>
+                        </select>
+                        <label for="time">Duration</label>
+                        <input id='time' type="text" formControlName="duration">
+                        <select name="unit" formControlName="timeUnit">
+                            <option value="minutes">Minutes</option>
+                            <option value="hout">Hour</option>
+                        </select>
+                  </div>
+                  <ng-container *ngIf="resistanceForm.touched && resistanceForm.invalid">
+                    <p>please choose desirable activity</p>
+                 </ng-container>
+
+                    <div [formGroup]="flexibilityForm">
+                        <label for="flexibility">Balance and Flexibility</label>
+                        <select formControlName="activity" name="flexibility" id="flexibility">
+                            <option value="Calf-raises">Calf-raises</option>
+                            <option value="Toe-raises">Toe-raises</option>
+                            <option value="Streching">Streching</option>
+                            <option value="tai-chi">Tai Chi</option>
+                            <option value="yoga">Yoga</option>
+                            <option value="pilates">Plitaes</option>
+                          </select>
+                          <label for="length">Duration</label>
+                          <input id='length' formControlName="duration" type="text">
+                          <select name="unit" formControlName="timeUnit">
+                            <option value="minutes">Minutes</option>
+                            <option value="hout">Hour</option>
+                        </select>
+                    </div>
+                    <ng-container *ngIf="flexibilityForm.touched && flexibilityForm.invalid">
+                        <p>please choose desirable activity</p>
+                     </ng-container>
+                    <button (click)="onConfirm()">Confirm</button>
+            </ng-container>
     
     
-    
-          <div [formGroup]="resistanceForm">
-              <label for="strength">Strength (resistance) Exercise</label>
-              <select formControlName="activity" name="aerobic-exercise" id="strength">
-                  <option value="weights">Free Weights</option>
-                  <option value="pushups">Pushups</option>
-                  <option value="situps">Sit-ups</option>
-                  <option value="lunges">lunges</option>
-                  <option value="squats">Squats</option>
-                  <option value="stepups">Step-ups</option>
-                </select>
-                <label for="time">Duration</label>
-                <input id='time' type="text" formControlName="duration">
-                <select name="unit" formControlName="timeUnit">
-                    <option value="minutes">Minutes</option>
-                    <option value="hout">Hour</option>
-                </select>
-          </div>
-    
-            <div [formGroup]="flexibilityForm">
-                <label for="flexibility">Balance and Flexibility</label>
-                <select formControlName="activity" name="flexibility" id="flexibility">
-                    <option value="Calf-raises">Calf-raises</option>
-                    <option value="Toe-raises">Toe-raises</option>
-                    <option value="Streching">Streching</option>
-                    <option value="tai-chi">Tai Chi</option>
-                    <option value="yoga">Yoga</option>
-                    <option value="pilates">Plitaes</option>
-                  </select>
-                  <label for="length">Duration</label>
-                  <input id='length' formControlName="duration" type="text">
-                  <select name="unit" formControlName="timeUnit">
-                    <option value="minutes">Minutes</option>
-                    <option value="hout">Hour</option>
-                </select>
-            </div>
-    </form>
-    
-    <button (click)="onConfirm()">Confirm</button>
 </ng-container>
 
-<ng-template #edit>
+<ng-container *ngIf="done | async">
 <button (click)="onAddClick()">Add</button>
-</ng-template>
-
-<ng-container>
-
 </ng-container>
+
 
 
 

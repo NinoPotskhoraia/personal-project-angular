@@ -1,7 +1,7 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from './services/user.service';
-import { tap } from 'rxjs';
+import { Subscription, tap } from 'rxjs';
 import { IUser } from './interfaces/user-interface';
 import { ILoginData } from './interfaces/login-interface';
 
@@ -11,37 +11,47 @@ import { ILoginData } from './interfaces/login-interface';
   styleUrls: ['./auth.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AuthComponent {
+export class AuthComponent implements OnDestroy {
   mode: 'register' | 'login' = 'login';
 
   constructor(private router: Router, private userService: UserService) {}
 
+  subscriptions: Subscription[] = [];
+
   onRegister(data: IUser) {
-    this.userService
-      .registerUser(data)
-      .pipe(
-        tap((res) => {
-          if (res) {
-            this.mode = 'login';
-          }
-        })
-      )
-      .subscribe();
+    this.subscriptions.push(
+      this.userService
+        .registerUser(data)
+        .pipe(
+          tap((res) => {
+            if (res) {
+              this.mode = 'login';
+            }
+          })
+        )
+        .subscribe()
+    );
   }
 
   onLogin(loginData: ILoginData) {
-    this.userService
-      .authenticate(loginData)
-      .pipe(
-        tap((res) => {
-          if (res) {
-            this.userService.logIn(res);
-            this.router.navigateByUrl('/hero');
-            return;
-          }
-          this.userService.logInError.next(true);
-        })
-      )
-      .subscribe();
+    this.subscriptions.push(
+      this.userService
+        .authenticate(loginData)
+        .pipe(
+          tap((res) => {
+            if (res) {
+              this.userService.logIn(res);
+              this.router.navigateByUrl('/hero');
+              return;
+            }
+            this.userService.logInError.next(true);
+          })
+        )
+        .subscribe()
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach((element) => element.unsubscribe());
   }
 }
