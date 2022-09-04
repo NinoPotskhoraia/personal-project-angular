@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SmChartComponent } from './components/sm-chart/sm-chart.component';
+import { SmComponent } from './components/sm/sm.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: SmChartComponent,
+    component: SmComponent,
   },
 ];
 

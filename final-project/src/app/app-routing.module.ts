@@ -29,10 +29,10 @@ const routes: Routes = [
     canLoad: [AuthorizedGuard],
   },
   {
-    path: 'chart',
+    path: 'sm',
     loadChildren: () =>
       import('./features/smForm/sm.module').then((m) => m.SmModule),
-    canLoad: [AuthorizedGuard],
+    // canLoad: [AuthorizedGuard],
   },
   {
     path: 'pa',

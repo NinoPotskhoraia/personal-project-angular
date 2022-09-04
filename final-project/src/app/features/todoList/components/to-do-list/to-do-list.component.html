@@ -1,7 +1,7 @@
 <h1>To Do List</h1>
 <div class="wrapper">
         <ng-container *ngIf="showPercent | async">
-            <h2 >You have completed {{status | async}} % of your tasks</h2>
+            <h2 > Congratulations! You have completed all of your tasks</h2>
         </ng-container>
    
 
@@ -14,7 +14,7 @@
 
     <input type="text" [formControl]="description" placeholder="type in your goals for today">
     <ng-container *ngIf="description?.invalid && (description?.touched)">
-        <p>Please type in short description of the activity you would like to accomplish today</p>
+        <p>Please type in short description of the task you would like to accomplish today</p>
     </ng-container>
 
    

@@ -1,1 +1,69 @@
-<p>sm-chart works!</p>
+
+    <form [formGroup]="psychForm" class="disposition">
+        <h2>Your Disposition</h2>
+        <h3>Today I Feel:</h3>
+
+        <label for="irritation">Irritable, angry, impatient or wound up</label>
+        <input formControlName="irritation" type="checkbox" id="irritation">
+        
+        <label for="anxious">Anxious, nervous or afraid</label>
+        <input formControlName="anxiety" type="checkbox" id="anxious">
+
+        <label for="depressed">Depressed, Uninterested in life, or Unable to enjoy myself</label>
+        <input formControlName="depressed" type="checkbox" id="depressed">
+
+        <label for="lonely">Neglected or lonely</label>
+        <input formControlName="lonely" type="checkbox" id="lonely">
+    </form>
+
+
+    <form [formGroup]="physForm" class="physical-signs">
+        <h2>Physical Sensations or Discomfort</h2>
+        <h3>Today I seem to have:</h3>
+
+        <label for="breathing">Diffculty breathing</label>
+        <input formControlName="breathing" type="checkbox" id="breathing">
+
+        <label for="panic">Panic attacks</label>
+        <input formControlName="panic" type="checkbox" id="panic">
+
+        <label for="sleep">Sleep problems</label>
+        <input formControlName="sleep" type="checkbox" id="sleep">
+
+        <label for="eyes">Blurred eyesight or sore eyes</label>
+        <input formControlName="vision" type="checkbox" id="eyes">
+
+        <label for="fatigue">Fatigue</label>
+        <input formControlName="fatigue" type="checkbox" id="fatigue">
+
+        <label for="pain">Muscle aches and headaches</label>
+        <input formControlName="pain" type="checkbox" id="pain">
+
+        <label for="sweating">Heavy Sweating</label>
+        <input formControlName="sweating" type="checkbox" id="sweating">
+
+    </form>
+
+    <form [formGroup]="behaviorForm" class="behavior">
+        <h2>Behavior</h2>
+        <h3>Today I tend to:</h3>
+
+        <label for="concentration">Find it hard to make decisions or concentrate</label>
+        <input formControlName="concentration" type="checkbox" id="concentration">
+
+        <label for="memory">Find it hard to  remember things, or memory feels slower than usual</label>
+        <input formControlName="memory" type="checkbox" id="memory">
+
+        <label for="snap">Snap at people</label>
+        <input formControlName="aggresion" type="checkbox" id="snap">
+
+        <label for="habits">Bite my nails\Pick at or itch my skin\Grind my teeth or clench my jaw</label>
+        <input formControlName="habits" type="checkbox" id="habits">
+
+        <label for="eat">Eat too much or too little</label>
+        <input formControlName="eating" type="checkbox" id="eat">
+
+    </form>
+
+
+

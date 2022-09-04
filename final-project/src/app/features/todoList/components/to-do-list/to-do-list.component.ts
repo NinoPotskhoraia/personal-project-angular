@@ -21,7 +21,6 @@ export class ToDoListComponent implements OnDestroy {
   completedTasks: BehaviorSubject<ITask[]> = new BehaviorSubject([] as ITask[]);
   tasksArr: ITask[] = [];
   selectedTaskId: BehaviorSubject<number> = new BehaviorSubject(0);
-  status: BehaviorSubject<number> = new BehaviorSubject(0);
   showPercent = new BehaviorSubject(false);
   updating = new BehaviorSubject(false);
 
@@ -43,6 +42,7 @@ export class ToDoListComponent implements OnDestroy {
           .pipe(tap((res) => this.tasksSubject.next(res)))
           .subscribe()
       );
+
       this.description.reset();
     }, 100);
   }
@@ -80,23 +80,26 @@ export class ToDoListComponent implements OnDestroy {
           .pipe(tap((res) => this.tasksSubject.next(res)))
           .subscribe()
       );
-    }, 200);
+    }, 100);
   }
 
   complete(task: ITask) {
     this.todoService.completed.next(true);
     this.tasksArr.push(task);
     this.completedTasks.next(this.tasksArr);
-
-    this.getStatus();
     this.delete(task.id);
+    setTimeout(() => {
+      if (
+        this.completedTasks.value.length &&
+        this.tasksSubject.value.length === 0
+      ) {
+        this.getStatus();
+      }
+    }, 200);
   }
 
   getStatus() {
     this.showPercent.next(true);
-    this.status.next(
-      (this.tasksSubject.value.length / this.completedTasks.value.length) * 100
-    );
   }
 
   ngOnDestroy(): void {

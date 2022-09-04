@@ -1,20 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SmResultsComponent } from './sm-results.component';
+import { SmComponent } from './sm.component';
 
 describe('SmResultsComponent', () => {
-  let component: SmResultsComponent;
-  let fixture: ComponentFixture<SmResultsComponent>;
+  let component: SmComponent;
+  let fixture: ComponentFixture<SmComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SmResultsComponent ]
-    })
-    .compileComponents();
+      declarations: [SmComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SmResultsComponent);
+    fixture = TestBed.createComponent(SmComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
