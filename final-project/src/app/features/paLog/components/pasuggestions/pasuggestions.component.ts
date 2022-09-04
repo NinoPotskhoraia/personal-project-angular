@@ -34,6 +34,7 @@ export class PASuggestionsComponent implements OnInit {
   ngOnInit(): void {
     this.paRoutine = this.paService.paRoutine;
     this.choosing = this.paService.choosing;
+    this.editing = this.paService.editing;
   }
 
   onAerobicClick() {
@@ -64,5 +65,10 @@ export class PASuggestionsComponent implements OnInit {
   onApprove() {
     this.suggestion.next(false);
     this.approved.emit();
+  }
+
+  back() {
+    this.choosing.next(true);
+    this.editing.next(true);
   }
 }

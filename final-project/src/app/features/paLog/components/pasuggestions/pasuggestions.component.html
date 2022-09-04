@@ -47,7 +47,10 @@
     <ul *ngFor="let routine of paRoutine | async">
         <li>{{routine.activity}} {{routine.duration}} {{routine.timeUnit}}</li>
        </ul>
+       <button (click)="back()">Go back</button>
 </ng-template>
+
+
 
 
 
