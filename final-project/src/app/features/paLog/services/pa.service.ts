@@ -12,6 +12,7 @@ export class PaService {
 
   choosing = new BehaviorSubject(true);
   editing = new BehaviorSubject(true);
+  done = new BehaviorSubject(false);
 
   Aerobic() {
     this.paRoutine.next(this.cardio);

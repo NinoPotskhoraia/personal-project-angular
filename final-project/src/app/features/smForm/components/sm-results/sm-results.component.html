@@ -1,0 +1,17 @@
+
+<ng-container *ngIf="submited | async">
+  
+    <p>{{result | async}}</p>
+    <button (click)="onClick()">Stress Relief Strategies</button>
+    
+        <ng-container *ngIf="helpRequest | async">
+            <ul *ngFor="let tip of tipsSubject | async">
+                <li>{{tip.body}}</li>
+            </ul>
+        </ng-container>
+
+        <ng-container *ngIf="helpSuggestion | async">
+            <button routerLink="/sign-up">Set an appointment with our Councellor</button>
+        </ng-container>
+</ng-container>
+

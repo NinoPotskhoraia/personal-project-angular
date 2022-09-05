@@ -32,12 +32,18 @@ const routes: Routes = [
     path: 'sm',
     loadChildren: () =>
       import('./features/smForm/sm.module').then((m) => m.SmModule),
-    // canLoad: [AuthorizedGuard],
+    canLoad: [AuthorizedGuard],
   },
   {
     path: 'pa',
     loadChildren: () =>
       import('./features/paLog/pa.module').then((m) => m.PAModule),
+    canLoad: [AuthorizedGuard],
+  },
+  {
+    path: 'sign-up',
+    loadChildren: () =>
+      import('./shared/sign-up.module').then((m) => m.SignUpModule),
     canLoad: [AuthorizedGuard],
   },
   {

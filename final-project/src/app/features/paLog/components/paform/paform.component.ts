@@ -26,6 +26,7 @@ export class PAFormComponent implements OnInit {
   ngOnInit(): void {
     this.editing = this.paService.editing;
     this.choosing = this.paService.choosing;
+    this.done = this.paService.done;
   }
 
   choosing = new BehaviorSubject(true);

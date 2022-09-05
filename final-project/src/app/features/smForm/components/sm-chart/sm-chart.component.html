@@ -15,6 +15,13 @@
         <label for="lonely">Neglected or lonely</label>
         <input formControlName="lonely" type="checkbox" id="lonely">
     </form>
+        <button (click)="onMoodClick()">Get Useful tips for mood regulation:</button>
+        <ng-container *ngIf="showMoodTips | async">
+            <ul *ngFor="let tip of tipsSubject | async">
+                <li>{{tip.body}}</li>
+            </ul>
+        </ng-container>
+   
 
 
     <form [formGroup]="physForm" class="physical-signs">
@@ -43,9 +50,15 @@
         <input formControlName="sweating" type="checkbox" id="sweating">
 
     </form>
+        <button (click)="onSignClick()">Tips to help you ease physical symptoms of stress:</button>
+        <ng-container *ngIf="showDiscomfortTips | async">
+            <ul *ngFor="let tip of tipsSubject | async">
+                <li>{{tip.body}}</li>
+            </ul>
+        </ng-container>
 
     <form [formGroup]="behaviorForm" class="behavior">
-        <h2>Behavior</h2>
+        <h2>Altered Behavior</h2>
         <h3>Today I tend to:</h3>
 
         <label for="concentration">Find it hard to make decisions or concentrate</label>
@@ -64,6 +77,14 @@
         <input formControlName="eating" type="checkbox" id="eat">
 
     </form>
+        <button (click)="onBehaviorClick()">Useful Tips for Grounding during stressful situations:</button>
+        <ng-container *ngIf="showBehaviorTips | async">
+            <ul *ngFor="let tip of tipsSubject | async">
+                <li>{{tip.body}}</li>
+            </ul>
+        </ng-container>
+
+        <button routerLink="results" (click)="onSubmit()">Submit and get Feedback</button>
 
 
 

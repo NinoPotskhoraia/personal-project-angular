@@ -1,17 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SignUpComponent } from 'src/app/shared/components/sign-up/sign-up.component';
-import { SmResultsComponent } from './components/sm-results/sm-results.component';
-import { SmComponent } from './components/sm/sm.component';
+import { HeroComponent } from './components/hero.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: SmComponent,
-  },
-  {
-    path: 'results',
-    component: SmResultsComponent,
+    component: HeroComponent,
+
     children: [
       {
         path: 'sign-up',
@@ -25,4 +21,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class SMRoutingModule {}
+export class HeroRoutingModule {}

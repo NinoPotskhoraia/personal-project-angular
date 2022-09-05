@@ -21,6 +21,7 @@ export class PASuggestionsComponent implements OnInit {
   suggestion = new BehaviorSubject(false);
   choosing = new BehaviorSubject(true);
   editing = new BehaviorSubject(true);
+  done = new BehaviorSubject(false);
 
   paRoutine: BehaviorSubject<IPlan[]> = new BehaviorSubject([] as IPlan[]);
 
@@ -35,6 +36,7 @@ export class PASuggestionsComponent implements OnInit {
     this.paRoutine = this.paService.paRoutine;
     this.choosing = this.paService.choosing;
     this.editing = this.paService.editing;
+    this.done = this.paService.done;
   }
 
   onAerobicClick() {
@@ -70,5 +72,6 @@ export class PASuggestionsComponent implements OnInit {
   back() {
     this.choosing.next(true);
     this.editing.next(true);
+    this.done.next(false);
   }
 }

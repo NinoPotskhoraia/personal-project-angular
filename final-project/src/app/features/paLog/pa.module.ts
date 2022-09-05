@@ -6,8 +6,14 @@ import { PAFormComponent } from './components/paform/paform.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { PARoutingModule } from './pa-routing.module';
 
+
+
 @NgModule({
   declarations: [PALogComponent, PASuggestionsComponent, PAFormComponent],
-  imports: [CommonModule, SharedModule, PARoutingModule],
+  imports: [
+    CommonModule,
+    SharedModule,
+    PARoutingModule
+  ]
 })
-export class PAModule {}
+export class PAModule { }

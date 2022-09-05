@@ -6,9 +6,6 @@ const routes: Routes = [
   {
     path: '',
     component: ToDoListComponent,
-    // resolve: {
-    //   posts: PostListResolver
-    // }
   },
 ];
 
