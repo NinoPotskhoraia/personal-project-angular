@@ -1,7 +1,16 @@
 
 <div class="wrapper sign-up">
-    <label for="email">Type in yoour email</label>
-    <input id="email" type="email" placeholder="email">
-    <button>Submit</button>
+    <div class="container">
+        <label for="email">Type in your Email</label>
+        <input [formControl]="email" id="email" type="email" placeholder="email">
+        <button [disabled]="email.invalid" (click)="onClick()">Submit</button>
+        <ng-container *ngIf="email.touched && email.invalid">
+           <p>Please type in a valid email</p>
+        </ng-container>
+
+        <ng-container *ngIf="submited">
+            <p>Thank You! Easy Wave team will contact you with further details you as soon as possible. We are Grateful for your trust and loyalty</p>
+        </ng-container>
+    </div>
 </div>
 

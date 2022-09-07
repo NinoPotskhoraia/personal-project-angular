@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-sign-up',
@@ -6,8 +7,13 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   styleUrls: ['./sign-up.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SignUpComponent implements OnInit {
+export class SignUpComponent {
   constructor() {}
 
-  ngOnInit(): void {}
+  email = new FormControl('', [Validators.email, Validators.required]);
+  submited = false;
+
+  public onClick(): void {
+    this.submited = true;
+  }
 }
