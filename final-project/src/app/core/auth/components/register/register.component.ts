@@ -35,9 +35,8 @@ export class RegisterComponent {
 
   constructor() {}
 
-  onRegister() {
+  public onRegister(): void {
     this.register.emit(this.regForm.getRawValue() as IUser);
-    console.log(this.regForm);
   }
 
   get name() {

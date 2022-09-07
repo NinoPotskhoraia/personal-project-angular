@@ -33,7 +33,7 @@ export class LoginComponent {
     ]),
   });
 
-  public onLogin() {
+  public onLogin(): void {
     this.logIn.emit(this.loginForm.getRawValue() as ILoginData);
   }
 

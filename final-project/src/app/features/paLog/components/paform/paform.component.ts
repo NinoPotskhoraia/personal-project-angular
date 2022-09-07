@@ -49,7 +49,7 @@ export class PAFormComponent implements OnInit {
     timeUnit: new FormControl(''),
   });
 
-  public onConfirm() {
+  public onConfirm(): void {
     if (this.aerobicsForm.value.activity) {
       this.arr.push(this.aerobicsForm.value);
     }
@@ -68,7 +68,7 @@ export class PAFormComponent implements OnInit {
     console.log(this.aerobicsForm);
   }
 
-  public onAddClick() {
+  public onAddClick(): void {
     this.editing.next(true);
     this.done.next(false);
   }

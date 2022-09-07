@@ -1,14 +1,16 @@
 
 
-<app-pasuggestions
-(aerobics)="aerobic()"
-(weight)="weightLoss()"
-(strength)="strength()"
-(flexibility)="flexibility()"
-(mentalHealth)="mentalHealth()"
-(approved)="approve()"></app-pasuggestions>
-
-
-<app-paform
-(customWorkout)="setCustomWorkout($event)"
-></app-paform>
+<article class="pa flex justify wrapper">
+    <app-pasuggestions
+    (aerobics)="aerobic()"
+    (weight)="weightLoss()"
+    (strength)="strength()"
+    (flexibility)="flexibility()"
+    (mentalHealth)="mentalHealth()"
+    (approved)="approve()"></app-pasuggestions>
+    
+    
+    <app-paform
+    (customWorkout)="setCustomWorkout($event)"
+    ></app-paform>
+</article>

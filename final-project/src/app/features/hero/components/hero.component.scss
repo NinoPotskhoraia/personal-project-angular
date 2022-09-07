@@ -1,0 +1,80 @@
+@import "../../../../styles/palette";
+@import "../../../../styles/variables";
+@import "../../../../styles/mixins";
+
+.hero{
+    background: radial-gradient(ellipse at top, $secondary-color, transparent),
+            radial-gradient(ellipse at bottom, $primary-bg-color, transparent);
+    height:83vh;
+    width:auto;
+    text-align: center;
+
+    h1{
+        @include heading(120px, $button-color);
+        letter-spacing: 2px;
+    }
+
+    h2{
+        @include heading(56px, $secondary-color);
+        margin-bottom:1em;
+    }
+
+    .button-container{
+        min-height:250px;
+        justify-content: space-between;
+
+    button{
+        font-size: 18px;
+    }
+
+    @keyframes show {
+        0%{opacity:0}
+        100%{opacity:1}
+    }
+    
+
+    .to-do-list{
+        animation-name: show;
+        animation-duration: 2s;
+        animation-timing-function: linear;
+        animation-fill-mode: backwards;
+    }
+
+    .pa{
+        animation-name: show;
+        animation-duration: 3s;
+        animation-timing-function: linear;
+        animation-delay: 0.5s;
+        animation-fill-mode: backwards;
+    }
+
+    .sm{
+        animation-name: show;
+        animation-duration: 3s;
+        animation-timing-function: linear;
+        animation-delay: 1s;
+        animation-fill-mode: backwards;
+    }
+
+
+    .pink{
+        background-color: $primary-bg-color;
+        color:$primary-color;
+        border:none;
+        border-radius: 5px;
+        font-size:16px;
+    }
+
+    .pink:hover{
+        background-color: $secondary-color;
+    }
+
+    .cta{
+        padding:1em 1.5em;
+        font-size:24px;
+        border-radius:7px;
+    }
+
+}
+    
+}

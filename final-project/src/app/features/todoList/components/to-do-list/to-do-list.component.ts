@@ -48,12 +48,12 @@ export class ToDoListComponent implements OnDestroy {
     }, 100);
   }
 
-  selectTask(task: ITask) {
+  public selectTask(task: ITask): void {
     this.selectedTaskId.next(task.id);
     this.updating.next(true);
   }
 
-  update() {
+  public update(): void {
     let updatedTask = { description: this.desc } as ITask;
     this.subscriptions.push(
       this.todoService
@@ -72,7 +72,7 @@ export class ToDoListComponent implements OnDestroy {
     }, 200);
   }
 
-  delete(id: number) {
+  public delete(id: number): void {
     this.todoService.deleteTask(id).subscribe();
     setTimeout(() => {
       this.subscriptions.push(
@@ -84,7 +84,7 @@ export class ToDoListComponent implements OnDestroy {
     }, 100);
   }
 
-  complete(task: ITask) {
+  public complete(task: ITask): void {
     this.todoService.completed.next(true);
     this.tasksArr.push(task);
     this.completedTasks.next(this.tasksArr);
@@ -99,7 +99,7 @@ export class ToDoListComponent implements OnDestroy {
     }, 200);
   }
 
-  getStatus() {
+  public getStatus(): void {
     this.showPercent.next(true);
   }
 

@@ -6,8 +6,14 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   styleUrls: ['./hero.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HeroComponent implements OnInit {
+export class HeroComponent {
   constructor() {}
 
-  ngOnInit(): void {}
+  showButton = true;
+  showOptions = false;
+
+  public onClick(): void {
+    this.showButton = false;
+    this.showOptions = true;
+  }
 }

@@ -41,7 +41,12 @@
       "id": 4
     }
   ],
-  "tasks": [],
+  "tasks": [
+    {
+      "description": "run",
+      "id": 1
+    }
+  ],
   "workouts": [],
   "tips": [
     [

@@ -1,14 +1,11 @@
 @import "../../../styles/palette";
 @import "../../../styles/variables";
 @import "../../../styles/mixins";
-.auth{
-    height:85vh;
-    width:auto;
+.wrapper{
     background-image: url('../../../assets/images/60157897099667.jpg');
-    background-position: center;
-    background-size: cover;
+   
 
-    .wrapper{
+    .auth{
          padding-right:3em;
          padding-left:5em;
          height:100%;

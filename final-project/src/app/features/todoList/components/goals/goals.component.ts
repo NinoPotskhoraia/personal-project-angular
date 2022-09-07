@@ -24,15 +24,15 @@ export class GoalsComponent {
   @Output() delete = new EventEmitter();
   @Output() completed = new EventEmitter();
 
-  public onEditClick() {
+  public onEditClick(): void {
     this.edit.emit();
   }
 
-  public onDeleteClick() {
+  public onDeleteClick(): void {
     this.delete.emit();
   }
 
-  public complete() {
+  public complete(): void {
     this.completed.emit();
   }
 }

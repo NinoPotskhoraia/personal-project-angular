@@ -39,37 +39,37 @@ export class PASuggestionsComponent implements OnInit {
     this.done = this.paService.done;
   }
 
-  onAerobicClick() {
+  public onAerobicClick(): void {
     this.suggestion.next(true);
     this.aerobics.emit();
   }
 
-  onWeightLossClick() {
+  public onWeightLossClick(): void {
     this.suggestion.next(true);
     this.weight.emit();
   }
 
-  onStrengthClick() {
+  public onStrengthClick(): void {
     this.suggestion.next(true);
     this.strength.emit();
   }
 
-  onFlexibilityClick() {
+  public onFlexibilityClick(): void {
     this.suggestion.next(true);
     this.flexibility.emit();
   }
 
-  onMentalHealthClick() {
+  public onMentalHealthClick(): void {
     this.suggestion.next(true);
     this.mentalHealth.emit();
   }
 
-  onApprove() {
+  public onApprove(): void {
     this.suggestion.next(false);
     this.approved.emit();
   }
 
-  back() {
+  public back(): void {
     this.choosing.next(true);
     this.editing.next(true);
     this.done.next(false);

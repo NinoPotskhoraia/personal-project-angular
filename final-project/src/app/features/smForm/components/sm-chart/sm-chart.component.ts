@@ -61,28 +61,28 @@ export class SmChartComponent implements OnInit {
     this.submited = this.smService.submited;
   }
 
-  onMoodClick() {
+  public onMoodClick(): void {
     this.moodTip.emit();
     this.showMoodTips.next(true);
     this.showDiscomfortTips.next(false);
     this.showBehaviorTips.next(false);
   }
 
-  onSignClick() {
+  public onSignClick(): void {
     this.symptomTip.emit();
     this.showDiscomfortTips.next(true);
     this.showMoodTips.next(false);
     this.showBehaviorTips.next(false);
   }
 
-  onBehaviorClick() {
+  public onBehaviorClick(): void {
     this.behaviorTip.emit();
     this.showBehaviorTips.next(true);
     this.showMoodTips.next(false);
     this.showDiscomfortTips.next(false);
   }
 
-  onSubmit() {
+  public onSubmit(): void {
     for (const [key, value] of Object.entries(this.psychForm.value)) {
       if (value === true) {
         this.marked++;

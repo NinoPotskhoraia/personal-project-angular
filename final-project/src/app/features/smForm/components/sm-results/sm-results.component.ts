@@ -52,7 +52,7 @@ export class SmResultsComponent implements OnInit, OnDestroy {
     this.tipsSubject = this.smService.tipsSubject;
   }
 
-  onClick() {
+  public onClick(): void {
     this.helpRequest.next(true);
     this.subscriptions.push(
       this.smService

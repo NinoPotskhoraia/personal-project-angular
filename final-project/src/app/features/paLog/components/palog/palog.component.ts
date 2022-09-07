@@ -14,31 +14,31 @@ export class PALogComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  aerobic() {
+  public aerobic(): void {
     this.paService.Aerobic();
   }
 
-  weightLoss() {
+  public weightLoss(): void {
     this.paService.WeightLoss();
   }
 
-  strength() {
+  public strength(): void {
     this.paService.Strength();
   }
 
-  flexibility() {
+  public flexibility(): void {
     this.paService.Flexibility();
   }
 
-  mentalHealth() {
+  public mentalHealth(): void {
     this.paService.MentalHealth();
   }
 
-  approve() {
+  public approve(): void {
     this.paService.Approve();
   }
 
-  setCustomWorkout(routine: IPlan[]) {
+  public setCustomWorkout(routine: IPlan[]): void {
     this.paService.CustomWorkout(routine);
   }
 }

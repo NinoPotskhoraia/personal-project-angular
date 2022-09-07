@@ -19,17 +19,12 @@ export class AuthComponent implements OnDestroy {
 
   subscriptions: Subscription[] = [];
 
-  modeChangeLogin() {
-    this.loginModeOn.next(true);
-    this.registerModeOn.next(false);
-  }
-
-  modeChangeRegister() {
+  public modeChangeRegister() {
     this.registerModeOn.next(true);
     this.loginModeOn.next(false);
   }
 
-  onRegister(data: IUser) {
+  public onRegister(data: IUser): void {
     this.subscriptions.push(
       this.userService
         .registerUser(data)
@@ -45,7 +40,7 @@ export class AuthComponent implements OnDestroy {
     this.registerModeOn.next(false);
   }
 
-  onLogin(loginData: ILoginData) {
+  public onLogin(loginData: ILoginData): void {
     this.subscriptions.push(
       this.userService
         .authenticate(loginData)

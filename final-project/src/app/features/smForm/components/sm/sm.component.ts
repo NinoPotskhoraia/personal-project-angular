@@ -20,7 +20,7 @@ export class SmComponent implements OnInit {
     this.smService.postTips(this.smService.tips).subscribe();
   }
 
-  moodRegulationTips() {
+  public moodRegulationTips(): void {
     this.subscriptions.push(
       this.smService
         .getTips()
@@ -35,7 +35,7 @@ export class SmComponent implements OnInit {
     );
   }
 
-  physicalDiscomfortTips() {
+  public physicalDiscomfortTips(): void {
     this.subscriptions.push(
       this.smService
         .getTips()
@@ -52,7 +52,7 @@ export class SmComponent implements OnInit {
     );
   }
 
-  behaviorTips() {
+  public behaviorTips(): void {
     this.subscriptions.push(
       this.smService
         .getTips()
