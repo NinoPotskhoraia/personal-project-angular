@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from './services/user.service';
-import { Subscription, tap } from 'rxjs';
+import { BehaviorSubject, Subscription, tap } from 'rxjs';
 import { IUser } from './interfaces/user-interface';
 import { ILoginData } from './interfaces/login-interface';
 
@@ -12,11 +12,22 @@ import { ILoginData } from './interfaces/login-interface';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AuthComponent implements OnDestroy {
-  mode: 'register' | 'login' = 'login';
+  loginModeOn = new BehaviorSubject(true);
+  registerModeOn = new BehaviorSubject(false);
 
   constructor(private router: Router, private userService: UserService) {}
 
   subscriptions: Subscription[] = [];
+
+  modeChangeLogin() {
+    this.loginModeOn.next(true);
+    this.registerModeOn.next(false);
+  }
+
+  modeChangeRegister() {
+    this.registerModeOn.next(true);
+    this.loginModeOn.next(false);
+  }
 
   onRegister(data: IUser) {
     this.subscriptions.push(
@@ -25,12 +36,13 @@ export class AuthComponent implements OnDestroy {
         .pipe(
           tap((res) => {
             if (res) {
-              this.mode = 'login';
+              this.loginModeOn.next(true);
             }
           })
         )
         .subscribe()
     );
+    this.registerModeOn.next(false);
   }
 
   onLogin(loginData: ILoginData) {

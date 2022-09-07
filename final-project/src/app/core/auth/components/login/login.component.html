@@ -5,9 +5,9 @@
         <p>Please type in valid email address</p>
     </ng-container>
 
-    <label for="password"></label>
+    <label for="password">Password</label>
     <input type="password" id="password" name="password" placeholder="Password" formControlName="password">
-    <ng-container *ngIf="(password?.touched) && password?.errors?.['minlength']">
+    <ng-container *ngIf="(password?.touched) && password?.invalid">
         <p>Please type in valid password</p>
     </ng-container>
    

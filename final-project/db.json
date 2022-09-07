@@ -9,6 +9,36 @@
       "job": "doctor",
       "check": true,
       "id": 1
+    },
+    {
+      "name": "Nino Potskhoraia",
+      "email": "nino.potskhoraia17@gmail.com",
+      "age": 25,
+      "password": "12345678",
+      "confirm": "12345678",
+      "job": "student",
+      "check": true,
+      "id": 2
+    },
+    {
+      "name": "Nino Potskhoraia",
+      "email": "nino.potskhoraia@facebook.com",
+      "age": 23,
+      "password": "123456789",
+      "confirm": "123456789",
+      "job": "developer",
+      "check": true,
+      "id": 3
+    },
+    {
+      "name": "Nino Potskhoraia",
+      "email": "nino.potskhoraia17@gmail.com",
+      "age": 22,
+      "password": "1234567890",
+      "confirm": "1234567890",
+      "job": "sewer",
+      "check": true,
+      "id": 4
     }
   ],
   "tasks": [],

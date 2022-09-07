@@ -44,6 +44,7 @@ export class ToDoListComponent implements OnDestroy {
       );
 
       this.description.reset();
+      this.showPercent.next(false);
     }, 100);
   }
 

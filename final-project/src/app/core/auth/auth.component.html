@@ -1,11 +1,18 @@
-<div class="wrapper">
-    <h1>{{ mode === "login" ? "Log in" : "Register" }}</h1>
-    <button (click)="mode = 'register'">Register</button>
-    <button (click)="mode = 'login'">Log in</button>
-  
-    <app-login *ngIf="mode === 'login'" (logIn)="onLogin($event)"></app-login>
-    <app-register
-      *ngIf="mode === 'register'"
-      (register)="onRegister($event)"
-    ></app-register>
-  </div>
+<article class="auth">
+  <div class="wrapper flex justify">
+    <div class="left">
+      <h1 *ngIf="loginModeOn | async; else reg"> <span> Peace </span> and <span> Control </span> is beneath your fingertips </h1>
+      <ng-template #reg>
+      <h1>Join <span> Easy Wave </span> Community and become the Master of your own Life</h1>
+      </ng-template>
+    </div>
+      <div class="right">
+        <app-login *ngIf="loginModeOn | async" (logIn)="onLogin($event)"></app-login>
+        <a *ngIf="loginModeOn | async" (click)="modeChangeRegister()" >Or Register</a>
+        <app-register
+          *ngIf="registerModeOn | async"
+          (register)="onRegister($event)"
+        ></app-register>
+      </div>
+    </div>
+  </article>

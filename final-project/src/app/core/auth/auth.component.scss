@@ -1,0 +1,41 @@
+@import "../../../styles/palette";
+@import "../../../styles/variables";
+@import "../../../styles/mixins";
+.auth{
+    height:85vh;
+    width:auto;
+    background-image: url('../../../assets/images/60157897099667.jpg');
+    background-position: center;
+    background-size: cover;
+
+    .wrapper{
+         padding-right:3em;
+         padding-left:5em;
+         height:100%;
+        .left{
+            width:40%;
+           h1{
+            @include heading(46px, $primary-color);
+            max-width:8em;
+            padding-top:2em;
+
+            span{
+                color:$secondary-color;
+                font-size: 46px;
+            }
+           }
+        }
+
+        .right{
+            width:40%;
+
+            a{
+                color:$primary-color;
+                display: inline-block;
+                margin-left:16em;
+            }
+        }
+    }
+}
+
+

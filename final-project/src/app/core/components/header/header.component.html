@@ -1,13 +1,23 @@
 <header>
-    <h1>App</h1>
     <nav>
-      <ul>
-       
-        
-        <li *ngIf="loggedIn | async" routerLink="/hero">Home</li>
+      <ul class="flex justify">
+       <li>
+        <a routerLink="/hero"><img src="../../../../assets/images/icons8-wave-64.png" alt="easy wave logo"></a>
+       </li>
 
-        <li *ngIf="loggedIn | async; else login" (click)="logout()">Log Out</li>
-        <ng-template #login> <li routerLink="auth">Log in</li> </ng-template>
+      
+       <div>
+         <li><button *ngIf="showButton | async; else affirm" (click)="affirmation()" class="affirmation">Try your luck and get your affirmation for today</button></li>
+         <ng-template #affirm>
+          <li class="affirm-text">{{dailyAffirmation | async}}</li>
+         </ng-template>
+       </div>
+       
+       <li *ngIf="loggedIn | async; else login" (click)="logout()"><button>Log out</button></li>
+        <ng-template #login> <li routerLink="auth"><button>Log in</button></li> </ng-template>
+      
       </ul>
+
+      
     </nav>
   </header>

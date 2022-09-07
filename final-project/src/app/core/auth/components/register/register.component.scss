@@ -1,3 +1,12 @@
-.ng-invalid{
-    color:red;
+@import "../../../../../styles/palette";
+form{
+    background-color:$primary-color;
+    padding: 1em;
+    border-radius: 10px;
+    margin-bottom:3px;
+
+    .reg{
+        display:block;
+        margin-top:2px;
+    }
 }

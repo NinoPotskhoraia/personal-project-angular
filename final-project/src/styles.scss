@@ -1,1 +1,72 @@
-/* You can add global styles to this file, and also import other style files */
+@import "./styles/variables";
+@import "./styles/palette";
+@import "./styles/mixins";
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Poppins&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: $primary-font-family;
+    font-size:16px;
+}
+ 
+
+ul{
+    list-style: none;
+}
+
+
+
+button{
+    @include button;
+}
+
+button:hover{
+    @include button-hover;
+}
+
+form{
+    background-color:$primary-color;
+    border-radius: 10px;
+    border: 2px solid $primary-bg-color;
+    box-shadow: 5px 7px 32px 1px $button-color;
+}
+
+input{
+    @include input;
+}
+
+input:focus{
+    @include input-focus;
+}
+
+label{
+    font-family: $secondary-font-family;
+    font-size: 18px;
+}
+
+
+.flex{
+    display:flex;
+    align-items: center;
+}
+
+.justify{
+    justify-content: space-between;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.column{
+    flex-direction: column;
+}
+
+.grid{
+    display:grid;
+}

@@ -1,0 +1,28 @@
+@import "../../../../styles/palette";
+@import "../../../../styles/variables";
+
+header {
+    background-color:$primary-color;
+    padding:1.7em 3em;
+
+    
+        .affirmation{
+            font-family:$primary-font-family;
+            border-radius: 5px;
+            border-width:1.5px;
+            box-shadow: 5px 7px 32px 1px $secondary-color;
+            font-size: 20px;
+        }
+
+        .affirm-text{
+            color:$secondary-color;
+            letter-spacing: 0.5px;
+            max-width:600px;
+            text-align: center;
+            font-size:20px;
+            font-style: italic;
+            box-shadow: 3px 3px 32px 1px $secondary-color;
+        }
+
+    
+}

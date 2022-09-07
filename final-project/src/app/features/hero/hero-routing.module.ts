@@ -7,13 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: HeroComponent,
-
-    children: [
-      {
-        path: 'sign-up',
-        component: SignUpComponent,
-      },
-    ],
+  },
+  {
+    path: 'sign-up',
+    component: SignUpComponent,
   },
 ];
 
