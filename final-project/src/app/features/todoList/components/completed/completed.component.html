@@ -1,5 +1,12 @@
 
-<h1 *ngIf="completed | async">Completed Tasks:</h1>
-<ng-container *ngFor="let task of completedTasks | async">
-   <p>{{task.description}}</p>
-</ng-container>
+<div class="container">
+   <h2 *ngIf="completed | async">Completed Tasks:</h2>
+   <div class="tasks-container">
+      <ng-container *ngFor="let task of completedTasks | async">
+            <div class="task" flex>
+               <p>{{task.description}}</p>
+               <img src="../../../../../assets/images/icons8-tick-64.png" alt="check">
+            </div>
+      </ng-container>
+   </div>
+</div>

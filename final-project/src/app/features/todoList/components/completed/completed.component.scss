@@ -1,0 +1,23 @@
+@import "../../../../../styles/palette";
+
+.container{
+    padding:1em;
+
+    .tasks-container{
+        margin-bottom:3em;
+
+        .task{
+         align-items: center;
+        
+
+        p{
+            display:inline-block;
+        }
+
+        img{
+            width:20px;
+        }
+
+    }
+    }
+}

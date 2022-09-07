@@ -45,7 +45,7 @@ export class ToDoListComponent implements OnDestroy {
 
       this.description.reset();
       this.showPercent.next(false);
-    }, 100);
+    }, 400);
   }
 
   public selectTask(task: ITask): void {

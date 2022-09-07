@@ -17,7 +17,15 @@ ul{
     list-style: none;
 }
 
+p{
+    font-size:18px;
+    color:$primary-bg-color;
+    padding:0.5em;
+}
 
+h2{
+    @include heading(30px, $button-color);
+}
 
 button{
     @include button;
