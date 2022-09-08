@@ -33,7 +33,7 @@ export class HeaderComponent {
 
     'From this moment forward I invite love into my life. I am lovable and able to give and receive unconditional love.',
 
-    'From this moment forward choose to attract positive relationships into my life.',
+    'From this moment forward I choose to attract positive relationships into my life.',
 
     'From this moment forward I invite God’s wealth to flow through me in avalanches of abundance. God is my source of supply.',
 

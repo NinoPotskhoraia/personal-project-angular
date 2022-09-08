@@ -1,54 +1,53 @@
-<article class="container flex justify">
-  <div class="right">
-    <h1>To Do List</h1>
-    <img
-      src="../../../../../assets/images/online learning01.jpg"
-      alt="girl with laptop"
-    />
-  </div>
-  <div class="left flex">
-    <div class="goals-container">
-      <ng-container *ngIf="showPercent | async">
-        <h2>Congratulations! You have completed all of your tasks</h2>
-      </ng-container>
-
-      <ng-container *ngIf="updating | async; else add">
-        <button (click)="update()">update</button>
-      </ng-container>
-      <ng-template #add>
-        <button [disabled]="description.invalid" (click)="onAddClick()">
-          Add
-        </button>
-      </ng-template>
-
-      <input
-        type="text"
-        [formControl]="description"
-        placeholder="type in your goals for today"
+<article class="container">
+  <div class="flex justify">
+    <div class="right">
+      <h1>To Do List</h1>
+      <img
+        src="../../../../../assets/images/online learning01.jpg"
+        alt="girl with laptop"
       />
-      <ng-container *ngIf="description?.invalid && description?.touched">
-        <p>
-          Please type in short description of the task you would like to
-          accomplish today
-        </p>
-      </ng-container>
-
-      <app-goals
-        *ngFor="let task of tasksSubject | async"
-        [vm]="task"
-        (edit)="selectTask(task)"
-        (delete)="delete(task.id)"
-        (completed)="complete(task)"
-      >
-      </app-goals>
     </div>
-
-    <div class="completed-tasks">
-      <app-completed [completedTasks]="completedTasks"> </app-completed>
-       
-      <a routerLink="/pa">Plan your Physical Activity</a>
-      <a routerLink="/sm">Go to your SM chart</a>
-     
+    <div class="left flex">
+      <div class="goals-container">
+        <ng-container *ngIf="showPercent | async">
+          <h2>Congratulations! You have completed all of your tasks</h2>
+        </ng-container>
+        <ng-container *ngIf="updating | async; else add">
+          <button (click)="update()">update</button>
+        </ng-container>
+        <ng-template #add>
+          <button [disabled]="description.invalid" (click)="onAddClick()">
+            Add
+          </button>
+        </ng-template>
+        <input
+          type="text"
+          [formControl]="description"
+          placeholder="type in your goals for today"
+        />
+        <ng-container *ngIf="description?.invalid && description?.touched">
+          <p>
+            Please type in short description of the task you would like to
+            accomplish today
+          </p>
+        </ng-container>
+        <app-goals
+          *ngFor="let task of tasksSubject | async"
+          [vm]="task"
+          (edit)="selectTask(task)"
+          (delete)="delete(task.id)"
+          (completed)="complete(task)"
+        >
+        </app-goals>
+      </div>
+      <div class="completed-tasks">
+        <app-completed [completedTasks]="completedTasks"> </app-completed>
+      </div>
     </div>
+  </div>
+
+  <div class="links">
+    <a routerLink="/pa">Plan your Physical Activity</a>
+    <a routerLink="/sm">Go to your SM chart</a>
   </div>
 </article>

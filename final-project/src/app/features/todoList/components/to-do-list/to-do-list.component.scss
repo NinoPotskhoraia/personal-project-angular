@@ -39,14 +39,17 @@
         }
 
         .completed-tasks{
-            width:30%;
+            width:35%;
         }
 
+        
+    }
+
+    .links{
+        background-color: rgba(92, 18, 209, 0.25);
         a{
-            text-decoration: none;
-            color:$primary-bg-color;
-            display:block;
-            padding:0.5em;
+            color:$button-color;
+            font-size: 24px;
         }
     }
  
