@@ -25,6 +25,7 @@ export class SmChartComponent implements OnInit {
   marked = 0;
   markedSubject: BehaviorSubject<number> = new BehaviorSubject(0);
   submited = new BehaviorSubject(false);
+  result: BehaviorSubject<string> = new BehaviorSubject('');
 
   @Output() moodTip = new EventEmitter();
   @Output() symptomTip = new EventEmitter();
@@ -59,6 +60,7 @@ export class SmChartComponent implements OnInit {
     this.tipsSubject = this.smService.tipsSubject;
     this.markedSubject = this.smService.markedSubject;
     this.submited = this.smService.submited;
+    this.submited.next(false);
   }
 
   public onMoodClick(): void {

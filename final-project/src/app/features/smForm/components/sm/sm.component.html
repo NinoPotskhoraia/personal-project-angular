@@ -1,8 +1,13 @@
-<app-sm-chart
-(moodTip)="moodRegulationTips()"
-(symptomTip)="physicalDiscomfortTips()"
-(behaviorTip)="behaviorTips()"
-></app-sm-chart>
+<div class="wrapper">
+  <app-sm-chart
+    (moodTip)="moodRegulationTips()"
+    (symptomTip)="physicalDiscomfortTips()"
+    (behaviorTip)="behaviorTips()"
+  ></app-sm-chart>
 
-
-<app-sm-results></app-sm-results>
+  <app-sm-results></app-sm-results>
+  <div class="links">
+    <a href="/todo">Visit your To Do List</a>
+    <a routerLink="/pa">Go to your Physical Activity Plan</a>
+  </div>
+</div>

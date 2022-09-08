@@ -1,0 +1,19 @@
+@import "../../../../../styles/palette";
+
+.wrapper{
+    background: radial-gradient(ellipse at top, $secondary-color, transparent),
+    radial-gradient(ellipse at bottom, $primary-bg-color, transparent);
+    height:auto;
+    padding-top: 5em;
+
+    .links{
+        padding-top:2em;
+       background-color: rgba(12, 12, 67, 0.25);
+       
+        
+       a{
+        font-size:24px;
+        color:$button-color;
+       }
+    }
+}

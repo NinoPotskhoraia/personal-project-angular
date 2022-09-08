@@ -39,6 +39,16 @@
       "job": "sewer",
       "check": true,
       "id": 4
+    },
+    {
+      "name": "james",
+      "email": "otikopotskhoraia@gmail.com",
+      "age": 26,
+      "password": "123456789",
+      "confirm": "123456789",
+      "job": "sewer",
+      "check": true,
+      "id": 5
     }
   ],
   "tasks": [],

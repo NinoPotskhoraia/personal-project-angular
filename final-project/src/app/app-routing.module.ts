@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthorizedGuard } from './core/auth/guards/auth.guard';
 import { PageNotFoundComponent } from './core/components/page-not-found/page-not-found.component';
+import { SignUpComponent } from './shared/components/sign-up/sign-up.component';
 
 const routes: Routes = [
   {
@@ -39,6 +40,10 @@ const routes: Routes = [
     loadChildren: () =>
       import('./features/paLog/pa.module').then((m) => m.PAModule),
     // canLoad: [AuthorizedGuard],
+  },
+  {
+    path: 'sign-up',
+    component: SignUpComponent,
   },
   {
     path: '**',

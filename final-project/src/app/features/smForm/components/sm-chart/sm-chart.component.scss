@@ -1,3 +1,74 @@
-input{
-    display:block;
+@import "../../../../../styles/palette";
+@import "../../../../../styles/variables";
+@import "../../../../../styles/mixins";
+
+article{
+   h1{
+    @include heading(80px, $button-color);
+
+   
+   }
+
+   .pink {
+    background-color: $primary-bg-color;
+    padding:1em 2em;
+    color: $primary-color;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    margin-bottom:3em;
+  }
+
+  .pink:hover {
+    background-color: $secondary-color;
+  }
+.wrapper{
+    align-items: center;
+    padding-left:2em;
+    margin:4em 0;
+    form{
+        max-width:600px;
+        min-height:500px;
+        margin-right:2em;
+        padding-left:3em;
+        padding-top:3em;
+        margin-bottom:0.5em;
+
+        h2{
+            margin-bottom:1em;
+        }
+
+        h3{
+            font-size:20px;
+            margin-bottom:0.5em;
+            color:$primary-bg-color;
+        }
+    }
+
+    button{
+        font-size: 16px;
+    }
+
+    ul{
+        padding:1.5em 2em;
+        background-color: rgba(237, 148, 167, 0.25);
+        border-radius: 10px;
+        list-style: disc;
+        
+        li{
+            color:$button-color;
+        }
+    }
+
+    .tips{
+        margin-top:0.5em;
+    }
+
+    .margin{
+        margin-bottom:5em;
+    }
+
+    
+}
+
 }

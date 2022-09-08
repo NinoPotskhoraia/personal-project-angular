@@ -16,12 +16,10 @@ const routes: Routes = [
   {
     path: 'results',
     component: SmResultsComponent,
-    children: [
-      {
-        path: 'sign-up',
-        component: SignUpComponent,
-      },
-    ],
+  },
+  {
+    path: 'sign-up',
+    component: SignUpComponent,
   },
 ];
 

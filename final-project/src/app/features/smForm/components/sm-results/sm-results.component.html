@@ -1,21 +1,25 @@
+<section>
+  <ng-container *ngIf="submited | async">
+    <div class="wrapper flex justify">
+      <div class="suggestions">
+        <p>{{ result | async }}</p>
+        <ng-container *ngIf="helpSuggestion | async">
+          <button routerLink="/sign-up">
+            Register for an appointment with a Councellor
+          </button>
+        </ng-container>
+      </div>
 
-<section class="results">
-    <ng-container *ngIf="submited | async">
-    
-        <p>{{result | async}}</p>
-        <button (click)="onClick()">Stress Relief Strategies</button>
-    
-            <ng-container *ngIf="helpRequest | async">
-                <ul *ngFor="let tip of tipsSubject | async">
-                    <li>{{tip.body}}</li>
-                </ul>
-            </ng-container>
-    
-            <ng-container *ngIf="helpSuggestion | async">
-                <button routerLink="sign-up">Set an appointment with our Councellor</button>
-            </ng-container>
-    
-            <router-outlet></router-outlet>
-    </ng-container>
+      <div class="suggestions">
+        <button (click)="onClick()">
+          Get Tips for Long Term Stress Relief Strategies
+        </button>
+        <ng-container *ngIf="helpRequest | async">
+          <ul *ngFor="let tip of tipsSubject | async">
+            <li>{{ tip.body }}</li>
+          </ul>
+        </ng-container>
+      </div>
+    </div>
+  </ng-container>
 </section>
-

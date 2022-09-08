@@ -8,10 +8,6 @@ const routes: Routes = [
     path: '',
     component: HeroComponent,
   },
-  {
-    path: 'sign-up',
-    component: SignUpComponent,
-  },
 ];
 
 @NgModule({
