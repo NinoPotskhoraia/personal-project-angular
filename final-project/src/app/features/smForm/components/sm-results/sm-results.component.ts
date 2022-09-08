@@ -61,7 +61,6 @@ export class SmResultsComponent implements OnInit, OnDestroy {
         .pipe(
           tap((res) => {
             this.arr = res[0].filter((tip) => tip.category === 'long-term');
-            console.log(res);
             this.tipsSubject.next(this.arr);
           }),
           catchError((e) => {

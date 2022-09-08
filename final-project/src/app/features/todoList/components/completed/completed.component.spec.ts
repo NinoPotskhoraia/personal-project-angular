@@ -1,3 +1,4 @@
+import { HttpClient, HttpHandler } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CompletedComponent } from './completed.component';
@@ -8,9 +9,9 @@ describe('CompletedComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CompletedComponent ]
-    })
-    .compileComponents();
+      declarations: [CompletedComponent],
+      providers: [HttpClient, HttpHandler],
+    }).compileComponents();
   });
 
   beforeEach(() => {

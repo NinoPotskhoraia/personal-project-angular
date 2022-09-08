@@ -1,3 +1,8 @@
+import {
+  HttpClient,
+  HttpClientModule,
+  HttpHandler,
+} from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SmResultsComponent } from './sm-results.component';
@@ -8,9 +13,9 @@ describe('SmResultsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SmResultsComponent ]
-    })
-    .compileComponents();
+      declarations: [SmResultsComponent],
+      providers: [HttpClient, HttpHandler],
+    }).compileComponents();
   });
 
   beforeEach(() => {

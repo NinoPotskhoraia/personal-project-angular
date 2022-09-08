@@ -69,7 +69,7 @@ export class ToDoListComponent implements OnDestroy {
       );
       this.description.reset();
       this.updating.next(false);
-    }, 200);
+    }, 400);
   }
 
   public delete(id: number): void {

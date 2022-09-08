@@ -49,6 +49,16 @@
       "job": "sewer",
       "check": true,
       "id": 5
+    },
+    {
+      "name": "james",
+      "email": "nino.potskhoraia17@gmail.com",
+      "age": 34,
+      "password": "12345678",
+      "confirm": "12345678",
+      "job": "developer",
+      "check": true,
+      "id": 6
     }
   ],
   "tasks": [],

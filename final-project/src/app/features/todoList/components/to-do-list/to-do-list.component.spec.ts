@@ -1,3 +1,4 @@
+import { HttpClient, HttpHandler } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ToDoListComponent } from './to-do-list.component';
@@ -9,6 +10,7 @@ describe('ToDoListComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ToDoListComponent],
+      providers: [HttpClient, HttpHandler],
     }).compileComponents();
   });
 

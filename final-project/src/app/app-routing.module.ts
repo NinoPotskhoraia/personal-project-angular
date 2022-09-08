@@ -19,7 +19,7 @@ const routes: Routes = [
     path: 'hero',
     loadChildren: () =>
       import('./features/hero/hero.module').then((m) => m.HeroModule),
-    // canLoad: [AuthorizedGuard],
+    canLoad: [AuthorizedGuard],
   },
   {
     path: 'todo',
@@ -27,19 +27,19 @@ const routes: Routes = [
       import('./features/todoList/to-do-list.module').then(
         (m) => m.ToDoListModule
       ),
-    // canLoad: [AuthorizedGuard],
+    canLoad: [AuthorizedGuard],
   },
   {
     path: 'sm',
     loadChildren: () =>
       import('./features/smForm/sm.module').then((m) => m.SmModule),
-    // canLoad: [AuthorizedGuard],
+    canLoad: [AuthorizedGuard],
   },
   {
     path: 'pa',
     loadChildren: () =>
       import('./features/paLog/pa.module').then((m) => m.PAModule),
-    // canLoad: [AuthorizedGuard],
+    canLoad: [AuthorizedGuard],
   },
   {
     path: 'sign-up',
