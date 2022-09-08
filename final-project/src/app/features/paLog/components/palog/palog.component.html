@@ -1,16 +1,17 @@
-
-
-<article class="pa flex justify wrapper">
-    <app-pasuggestions
+<article class="pa">
+  <app-pasuggestions
     (aerobics)="aerobic()"
     (weight)="weightLoss()"
     (strength)="strength()"
     (flexibility)="flexibility()"
     (mentalHealth)="mentalHealth()"
-    (approved)="approve()"></app-pasuggestions>
-    
-    
-    <app-paform
-    (customWorkout)="setCustomWorkout($event)"
-    ></app-paform>
+    (approved)="approve()"
+  ></app-pasuggestions>
+
+  <app-paform (customWorkout)="setCustomWorkout($event)"></app-paform>
+
+  <div class="links">
+    <a href="/todo">Visit your To Do List</a>
+    <a routerLink="/sm">Go to your SM chart</a>
+  </div>
 </article>

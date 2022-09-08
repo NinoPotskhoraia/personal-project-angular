@@ -1,5 +1,7 @@
+@import "../../../../../styles/palette";
 .pa{
     background-image: url('../../../../../assets/images/__89_generated.jpg');
+    min-height:100vh;
 
     app-pasuggestions{
         width:40%;
@@ -7,6 +9,17 @@
 
     app-paform{
         width:40%;
+    }
+
+    .links{
+       width:100%;
+       text-align: center;
+       padding:1em 3em;
+       background-color: rgba(18, 50, 23, 0.7);
+       a{
+       font-size:24px;
+       color:$primary-color;
+       }
     }
 
 }

@@ -1,49 +1,49 @@
-<ng-container *ngIf="choosing | async; else approved">
-
-    <h1>Choose your goal for physical activity and get the routine planned by our highly qualified experts</h1>
-    
-        <button (click)="onAerobicClick()">Improved Heart and Lung Health</button>
-    
+<article class="pa">
+  <ng-container *ngIf="choosing | async; else approved">
+    <div class="pa-wrapper flex">
+      <div class="suggestions flex column justify">
+        <h1>
+          Choose your <span> Goal </span> for Physical Activity and get your
+          Workout routine planned by our highly qualified experts
+        </h1>
+        <button (click)="onAerobicClick()">
+          Improved Heart and Lung Health
+        </button>
         <button (click)="onWeightLossClick()">Weight Loss</button>
-    
-        <button (click)="onStrengthClick()">Increased Strength and Stamina</button>
-    
-        <button (click)="onFlexibilityClick()">Increased Flexibility and Joint Health</button>
-    
+        <button (click)="onStrengthClick()">
+          Increased Strength and Stamina
+        </button>
+        <button (click)="onFlexibilityClick()">
+          Increased Flexibility and Joint Health
+        </button>
         <button (click)="onMentalHealthClick()">Improved Mental Health</button>
-   
-
-
-
-    <ng-container *ngIf="suggestion | async">
+      </div>
+      <div>
+        <ng-container *ngIf="suggestion | async">
+          <div class="suggestions routine">
             <h2>We Suggest following workout routine:</h2>
-           <ul *ngFor="let routine of paRoutine | async">
-            <li>{{routine.activity}} for {{routine.duration}} {{routine.timeUnit}}</li>
-           </ul>
-    
-           <button (click)="onApprove()">Approve</button>
+            <ul *ngFor="let routine of paRoutine | async">
+              <li>
+                {{ routine.activity }} for {{ routine.duration }}
+                {{ routine.timeUnit }}
+              </li>
+            </ul>
+            <button (click)="onApprove()">Approve</button>
+          </div>
         </ng-container>
-    
-        <h2>Or Create your own plan for the day:</h2>
-</ng-container>
+      </div>
+    </div>
+  </ng-container>
 
-
-
-
-<ng-template #approved>
-    <h1>Your Workout Routine for the day is:</h1>
-    <ul *ngFor="let routine of paRoutine | async">
-        <li>{{routine.activity}} {{routine.duration}} {{routine.timeUnit}}</li>
-       </ul>
-       <button (click)="back()">Go back</button>
-</ng-template>
-
-
-
-
-
-
-
-
-
-
+  <ng-template #approved>
+    <div class="suggestions result-routine">
+      <h1>Your <span> Workout Routine </span> for the day is:</h1>
+      <ul *ngFor="let routine of paRoutine | async">
+        <li>
+          {{ routine.activity }} {{ routine.duration }} {{ routine.timeUnit }}
+        </li>
+      </ul>
+      <button calss="go-back-button" (click)="back()">Go back</button>
+    </div>
+  </ng-template>
+</article>
