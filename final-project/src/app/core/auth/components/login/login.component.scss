@@ -1,7 +1,21 @@
-
+@import "../../../../../styles/media-queries";
 form{
   
     padding:6em 2em;
    
     margin-bottom:3px;
+}
+
+@media (max-width:$tablet-width){
+    form{
+        width:85%;
+        padding:2em 1em;
+        label,input,p{
+            font-size:18px;
+        }
+
+        input{
+            width:90%;
+        }
+    }
 }

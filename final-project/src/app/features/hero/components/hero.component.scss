@@ -1,6 +1,7 @@
 @import "../../../../styles/palette";
 @import "../../../../styles/variables";
 @import "../../../../styles/mixins";
+@import "../../../../styles/media-queries";
 
 .hero {
   background: radial-gradient(ellipse at top, $secondary-color, transparent),
@@ -76,5 +77,55 @@
       font-size: 24px;
       border-radius: 7px;
     }
+  }
+}
+
+@media (max-width:$tablet-width){
+
+  .hero{
+    padding:30px 20px;
+
+    h1{
+      font-size:100px;
+    }
+
+    h2{
+      font-size:33px;
+    }
+
+    .cta{
+      padding:15px 10px;
+      font-size:20px;
+    }
+  }
+
+}
+
+@media (max-width:$mobile-width){
+  .hero{
+    padding:30px 20px;
+
+    h1{
+      font-size:50px;
+    }
+
+    h2{
+      font-size:20px;
+      margin-bottom: 30px;
+    }
+
+    .button-container{
+
+    button{
+      font-size:20px;
+      max-width:200px;
+      margin-bottom:5px;
+    }
+
+    .cta{
+      padding:8px 5px;
+      font-size:24px;
+    }
+  }
   }
 }

@@ -1,5 +1,6 @@
 @import "../../../../styles/palette";
 @import "../../../../styles/variables";
+@import "../../../../styles/media-queries";
 
 header {
     background-color:$primary-color;
@@ -24,4 +25,82 @@ header {
         }
 
     
+}
+
+@media (max-width:$tablet-width){
+  header{
+    padding:0.5em 1em;
+    width:$tablet-width;
+    margin:0;
+    overflow: hidden;
+
+    nav{
+        max-width:$tablet-width;
+        margin-right:0;
+        ul{
+            flex-direction: column;
+            justify-content: center;
+            max-width: 600px;
+            margin:0 auto;
+
+            .affirm{
+                max-width:300px;
+                margin-bottom:5px;
+               
+
+            .affirmation{
+                font-size: 15px;
+                margin-right:0;
+            }
+
+            .affirm-text{
+                font-size:15px;
+                max-width:300px;
+            }
+        }
+
+            .log-in,
+            .log-out{
+                margin:0;
+            }
+        }
+    }
+  }
+}
+
+@media (max-width:$mobile-width){
+header{
+    padding:10px;
+    width:$mobile-width;
+    margin:0;
+    overflow: hidden;
+
+    nav{
+        max-width:$mobile-width;
+        ul{
+            max-width: 300px;
+
+            .affirm{
+                max-width:300px;
+                margin-bottom:5px;
+               
+
+            .affirmation{
+                font-size: 15px;
+                margin-right:0;
+            }
+
+            .affirm-text{
+                font-size:15px;
+                max-width:300px;
+            }
+        }
+
+            .log-in,
+            .log-out{
+                margin:0;
+            }
+        }
+    }
+  }
 }

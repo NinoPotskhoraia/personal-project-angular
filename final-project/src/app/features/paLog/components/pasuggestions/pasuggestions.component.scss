@@ -1,93 +1,123 @@
 @import "../../../../../styles/variables";
 @import "../../../../../styles/palette";
 @import "../../../../../styles/mixins";
+@import "../../../../../styles/media-queries";
 
-.pa{
-    padding: 0 2em;
-    margin-bottom: 2em;
-    height:auto;
+.pa {
+  padding: 0 2em;
+  margin-bottom: 2em;
+  height: auto;
 
-    .pa-wrapper{
-        justify-content: space-around;
+  .pa-wrapper {
+    justify-content: space-around;
 
-        .routine{
+    .routine {
+      h2 {
+        color: $primary-bg-color;
+      }
+      ul {
+        padding: 2em;
+        list-style: disc;
 
-            h2{
-                color:$primary-bg-color;
-            }
-            ul{
-                padding:2em;
-                list-style:disc;
-
-                li{
-                    color:$secondary-color;
-                    font-size:24px;
-                }
-            }
+        li {
+          color: $secondary-color;
+          font-size: 24px;
         }
-.suggestions{
-
-    
-
-    h1{
+      }
+    }
+    .suggestions {
+      h1 {
         @include heading(30px, $button-color);
         text-align: center;
-        max-width:500px;
+        max-width: 500px;
         letter-spacing: 1.5px;
         line-height: 1.2;
-        margin-bottom:1em;
+        margin-bottom: 1em;
 
-        span{
-            color:$primary-bg-color;
-            font-size: 30px;
+        span {
+          color: $primary-bg-color;
+          font-size: 30px;
         }
+      }
+
+      button {
+        font-family: $primary-font-family;
+        font-size: 18px;
+        color: $secondary-color;
+        background-color: $primary-color;
+        border-radius: 5px;
+        padding: 1em;
+      }
+
+      button:hover {
+        background-color: $button-color;
+        color: $primary-color;
+      }
     }
+  }
 
-  button{
-    font-family: $primary-font-family ;
-    font-size: 18px;
-    color:$secondary-color;
-    background-color:$primary-color;
-    border-radius:5px;
-    padding:1em;
+  .result-routine {
+    width: 400px;
+    margin: 0 auto;
+    padding-top: 2em;
+    h1 {
+      @include heading(36px, $button-color);
+      text-align: center;
+      max-width: 400px;
+      letter-spacing: 1.5px;
+      line-height: 1.2;
+      margin-bottom: 1em;
 
-}
-
-  button:hover{
-    background-color: $button-color;
-    color:$primary-color;
-}
-
-}
+      span {
+        color: $primary-bg-color;
+        font-size: 30px;
+      }
     }
+    ul {
+      padding: 2em;
+      list-style: disc;
 
-.result-routine{
-    width:400px;
-    margin:0 auto;
-    padding-top:2em;
-    h1{
-        @include heading(36px, $button-color);
-        text-align: center;
-        max-width:400px;
-        letter-spacing: 1.5px;
-        line-height: 1.2;
-        margin-bottom:1em;
+      li {
+        color: $secondary-color;
+        font-size: 24px;
+      }
+    }
+  }
+}
 
-        span{
-            color:$primary-bg-color;
-            font-size: 30px;
+@media (max-width: $tablet-width) {
+  .pa {
+    .pa-wrapper {
+      .suggestions {
+        button {
+          margin-bottom: 10px;
         }
-
-}
-ul{
-    padding:2em;
-    list-style:disc;
-
-    li{
-        color:$secondary-color;
-        font-size:24px;
+      }
     }
-}
+  }
 }
 
+@media (max-width: $mobile-width) {
+  .pa {
+    .pa-wrapper {
+      flex-direction: column;
+
+      .suggestions {
+        button {
+          margin-bottom: 15px;
+        }
+      }
+    }
+
+    .result-routine {
+      width: 200px;
+      h1 {
+        font-size: 26px;
+
+        span {
+          font-size: 24px;
+        }
+      }
+    }
+  }
 }

@@ -1,47 +1,94 @@
 @import "../../../../../styles/palette";
 @import "../../../../../styles/variables";
 @import "../../../../../styles/mixins";
+@import "../../../../../styles/media-queries";
 
 section {
   .wrapper {
     background-image: url("../../../../../assets/images/66261.jpg");
-    padding:2em 3em;
+    padding: 2em 3em;
 
-    .suggestions{
-        width:40%;
+    .suggestions {
+      width: 40%;
+      text-align: center;
+
+      button {
+        background-color: $primary-bg-color;
+        font-size: 24px;
+        border: none;
+        border-radius: 15px;
+      }
+      ul {
+        padding: 0.5em 1em;
+        background-color: rgba(237, 148, 167, 0.9);
+        border-radius: 10px;
+        list-style: disc;
+        border: 1px solid $secondary-color;
+
+        li {
+          color: $button-color;
+          font-size: 18px;
+        }
+      }
+
+      p {
+        background-color: rgba(237, 148, 167, 0.9);
+        border-radius: 15px;
+        border-style: groove;
+        padding: 1.5em 2.5em;
+        font-size: 30px;
+        font-family: $secondary-font-family;
+        color: $secondary-color;
+        line-height: 1.5;
+        letter-spacing: 1.5px;
+        word-spacing: 1.5;
+      }
+    }
+  }
+}
+
+@media (max-width: $tablet-width) {
+  section {
+    .wrapper {
+      .suggestions {
+        width: 100%;
         text-align: center;
+        ul {
+          padding: 10px 20px;
 
-        button{
-            background-color:$primary-bg-color;
-            font-size:24px;
-            border:none;
-            border-radius:15px;
-        }
-        ul{
-            padding:0.5em 1em;
-            background-color: rgba(237, 148, 167, 0.9);
-            border-radius: 10px;
-            list-style: disc;
-            border:1px solid $secondary-color;
-            
-            li{
-                color:$button-color;
-                font-size: 18px;
-            }
+          li {
+            font-size: 16px;
+          }
         }
 
-        p{
-            background-color: rgba(237, 148, 167, 0.9);
-            border-radius: 15px;
-            border-style: groove;
-            padding:1.5em 2.5em;
-            font-size:30px;
-            font-family: $secondary-font-family;
-            color:$secondary-color;
-            line-height: 1.5;
-            letter-spacing: 1.5px;
-            word-spacing: 1.5;
+        p {
+          padding: 10px 20px;
+          font-size: 24px;
         }
+      }
+    }
+  }
+}
+
+@media (max-width: $mobile-width) {
+  section {
+    width: 100%;
+    .wrapper {
+      flex-direction: column;
+      .suggestions {
+        ul {
+          padding: 10px;
+
+          li {
+            font-size: 16px;
+          }
+        }
+
+        p {
+          padding: 10px;
+          font-size: 18px;
+        }
+      }
     }
   }
 }

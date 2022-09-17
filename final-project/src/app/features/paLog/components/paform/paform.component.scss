@@ -1,14 +1,38 @@
-.wrapper{
-    position: relative;
-    width:50%;
-    margin:0 auto;
-    background-color:rgba(255, 255, 224, 0.5);
-    padding:1.5em 0 5em 10em;
-    border-radius:10px;
+@import "../../../../../styles/media-queries";
+.wrapper {
+  position: relative;
+  width: 50%;
+  margin: 0 auto;
+  background-color: rgba(255, 255, 224, 0.5);
+  padding: 1.5em 0 5em 10em;
+  border-radius: 10px;
 }
 
-.add-button{
-    position:absolute;
-    top:19em;
-    left:42em;
+.add-button {
+  position: absolute;
+  top: 19em;
+  left: 42em;
+}
+
+@media (max-width: $tablet-width) {
+  .wrapper {
+    padding: 20px 30px;
+  }
+
+  .add-button {
+    top: 25em;
+    left: 15em;
+  }
+}
+
+@media (max-width: $mobile-width) {
+  .wrapper {
+    width: 100%;
+    padding: 10px 20px;
+  }
+
+  .add-button {
+    top: 28em;
+    left: 6em;
+  }
 }

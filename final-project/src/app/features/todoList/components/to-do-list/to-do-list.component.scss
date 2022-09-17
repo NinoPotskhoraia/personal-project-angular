@@ -1,6 +1,7 @@
 @import "../../../../../styles/palette";
 @import "../../../../../styles/variables";
 @import "../../../../../styles/mixins";
+@import "../../../../../styles/media-queries";
 
 .container{
      
@@ -53,5 +54,101 @@
         }
     }
  
+
+}
+
+@media (max-width:$tablet-width){
+    .container{
+        padding:2em;
+     
+        .right{
+            padding-left:3em;
+            padding-top:2em;
+    
+            h1{
+              font-size:50px;
+            }
+        }
+    
+        .left{
+            flex-direction: column;
+    
+            .goals-container{
+                input{
+                    width:250px;
+                }
+            }
+    
+        
+    
+            
+        }
+
+        .links{
+            a{
+                font-size: 18px;
+            }
+        } 
+
+     
+    
+    }
+
+}
+
+@media (max-width:$mobile-width){
+    .container{
+        padding:10px 20px;
+
+        .mobile{
+            flex-direction: column;
+     
+        .right{
+            width:100%;
+            padding:0;
+            display:flex;
+            justify-content: space-between;
+            padding-top:1em;
+            margin-bottom: 20px;
+    
+            h1{
+                padding-top:30px;
+              font-size:40px;
+            }
+
+            img{
+                width:200px;
+            }
+        }
+    
+        .left{
+            flex-direction: column;
+            justify-content: center;
+    
+            .goals-container{
+                input{
+                    width:200px;
+                }
+            }
+    
+            .completed-tasks{
+                width:35%;
+            }
+
+            
+    
+            
+        }
+    
+       
+     
+        }
+
+        .links{
+            a{
+                font-size: 15px;
+            }
+        }
+    }
 
 }

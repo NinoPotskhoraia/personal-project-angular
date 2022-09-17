@@ -1,23 +1,42 @@
 @import "../../../../../styles/palette";
-.pa{
-    background-image: url('../../../../../assets/images/__89_generated.jpg');
-    min-height:100vh;
+@import "../../../../../styles/media-queries";
+.pa {
+  background-image: url("../../../../../assets/images/__89_generated.jpg");
+  min-height: 100vh;
 
-    app-pasuggestions{
-        width:40%;
+  app-pasuggestions {
+    width: 40%;
+  }
+
+  app-paform {
+    width: 40%;
+  }
+
+  .links {
+    background-color: rgba(18, 50, 23, 0.7);
+    a {
+      font-size: 24px;
+      color: $primary-color;
     }
+  }
+}
 
-    app-paform{
-        width:40%;
+@media (max-width: $tablet-width) {
+  .pa {
+    .links {
+      a {
+        font-size: 19px;
+      }
     }
+  }
+}
 
-    .links{
-      
-       background-color: rgba(18, 50, 23, 0.7);
-       a{
-       font-size:24px;
-       color:$primary-color;
-       }
+@media (max-width: $mobile-width) {
+  .pa {
+    .links {
+      a {
+        font-size: 15px;
+      }
     }
-
+  }
 }
