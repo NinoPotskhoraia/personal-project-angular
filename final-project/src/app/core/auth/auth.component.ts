@@ -1,5 +1,9 @@
-import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
-import { Router } from '@angular/router';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
 import { UserService } from './services/user.service';
 import { BehaviorSubject, Subscription, tap } from 'rxjs';
 import { IUser } from './interfaces/user-interface';
@@ -11,11 +15,14 @@ import { ILoginData } from './interfaces/login-interface';
   styleUrls: ['./auth.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AuthComponent implements OnDestroy {
+export class AuthComponent implements OnInit {
   loginModeOn = new BehaviorSubject(true);
   registerModeOn = new BehaviorSubject(false);
 
-  constructor(private router: Router, private userService: UserService) {}
+  constructor(private userService: UserService) {}
+  ngOnInit(): void {
+    this.loginModeOn = this.userService.loginModeOn;
+  }
 
   subscriptions: Subscription[] = [];
 
@@ -25,40 +32,41 @@ export class AuthComponent implements OnDestroy {
   }
 
   public onRegister(data: IUser): void {
-    this.subscriptions.push(
-      this.userService
-        .registerUser(data)
-        .pipe(
-          tap((res) => {
-            if (res) {
-              this.loginModeOn.next(true);
-            }
-          })
-        )
-        .subscribe()
-    );
+    // this.subscriptions.push(
+    //   this.userService
+    //     .registerUser(data)
+    //     .pipe(
+    //       tap((res) => {
+    //         if (res) {
+    //           this.loginModeOn.next(true);
+    //         }
+    //       })
+    //     )
+    //     .subscribe()
+    // );
+    this.userService.registerUser(data);
     this.registerModeOn.next(false);
   }
 
   public onLogin(loginData: ILoginData): void {
-    this.subscriptions.push(
-      this.userService
-        .authenticate(loginData)
-        .pipe(
-          tap((res) => {
-            if (res) {
-              this.userService.logIn(res);
-              this.router.navigateByUrl('/hero');
-              return;
-            }
-            this.userService.logInError.next(true);
-          })
-        )
-        .subscribe()
-    );
+    // this.subscriptions.push(
+    //   this.userService
+    //     .authenticate(loginData)
+    //     .pipe(
+    //       tap((res) => {
+    //         if (res) {
+    //           this.userService.logIn(res);
+    //           this.router.navigateByUrl('/hero');
+    //           return;
+    //         }
+    //       })
+    //     )
+    //     .subscribe()
+    // );
+    this.userService.authenticate(loginData);
   }
 
-  ngOnDestroy(): void {
-    this.subscriptions.forEach((element) => element.unsubscribe());
-  }
+  // ngOnDestroy(): void {
+  //   this.subscriptions.forEach((element) => element.unsubscribe());
+  // }
 }

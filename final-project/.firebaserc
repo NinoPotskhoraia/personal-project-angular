@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "easy-wave-c4c0d": {
+      "hosting": {
+        "final-project": [
+          "easy-wave-c4c0d"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "easy-wave-c4c0d"
+  }
+}

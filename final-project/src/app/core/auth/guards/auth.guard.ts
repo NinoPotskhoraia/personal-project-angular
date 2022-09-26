@@ -25,7 +25,7 @@ export class AuthorizedGuard implements CanActivate, CanLoad {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    return this.userService.loggedInUser.pipe(map((user) => !!user));
+    return this.userService.loggedInSubject.value;
   }
 
   canLoad(
@@ -36,6 +36,6 @@ export class AuthorizedGuard implements CanActivate, CanLoad {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    return this.userService.loggedInUser.pipe(map((user) => !!user));
+    return this.userService.loggedInSubject.value;
   }
 }

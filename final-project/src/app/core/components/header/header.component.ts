@@ -13,10 +13,7 @@ export class HeaderComponent {
   dailyAffirmation: BehaviorSubject<string> = new BehaviorSubject('');
   showButton = new BehaviorSubject(true);
 
-  public loggedIn = this.userService.loggedInUser.pipe(
-    map((user) => !!user),
-    shareReplay(1)
-  );
+  public loggedIn = this.userService.loggedInSubject;
 
   affirmation() {
     let index = Math.floor(Math.random() * 10);
