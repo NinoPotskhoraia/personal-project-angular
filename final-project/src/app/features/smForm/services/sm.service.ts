@@ -1,35 +1,89 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, catchError, Observable, of } from 'rxjs';
+import {
+  addDoc,
+  collection,
+  Firestore,
+  getDocs,
+} from '@angular/fire/firestore';
+import { BehaviorSubject } from 'rxjs';
 import { ITip } from '../interfaces/sm-interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SmService {
-  constructor(private http: HttpClient) {}
+  constructor(public firestore: Firestore) {}
   tipsSubject: BehaviorSubject<ITip[]> = new BehaviorSubject([{}] as ITip[]);
   markedSubject: BehaviorSubject<number> = new BehaviorSubject(0);
   submited = new BehaviorSubject(false);
+  public data: any[] = [];
 
-  private baseUrl = 'http://localhost:3000';
-
-  postTips(tip: ITip[]) {
-    return this.http.post(this.baseUrl + '/tips', tip).pipe(
-      catchError((e) => {
-        console.log(e.message);
-        return of([]);
-      })
+  postTips(tip: ITip) {
+    const dbInstance = collection(this.firestore, 'tips');
+    addDoc(dbInstance, tip).then(
+      () => {
+        console.log('data sent');
+      },
+      (err) => {
+        alert(err.message);
+      }
     );
   }
 
-  getTips(): Observable<ITip[][]> {
-    return this.http.get<ITip[][]>(this.baseUrl + '/tips').pipe(
-      catchError((e) => {
-        console.log(e.message);
-        return of([]);
-      })
-    );
+  getMoodTips() {
+    const dbInstance = collection(this.firestore, 'tips');
+    getDocs(dbInstance).then((res) => {
+      this.data = [
+        ...res.docs.map((item) => {
+          return { ...item.data(), id: item.id };
+        }),
+      ];
+      this.tipsSubject.next(
+        this.data.filter((item) => item.category === 'mood')
+      );
+    });
+  }
+
+  getphysicalDiscomfortTips() {
+    const dbInstance = collection(this.firestore, 'tips');
+    getDocs(dbInstance).then((res) => {
+      this.data = [
+        ...res.docs.map((item) => {
+          return { ...item.data(), id: item.id };
+        }),
+      ];
+      this.tipsSubject.next(
+        this.data.filter((item) => item.category === 'physical-discomfort')
+      );
+    });
+  }
+
+  getbehaviorTips() {
+    const dbInstance = collection(this.firestore, 'tips');
+    getDocs(dbInstance).then((res) => {
+      this.data = [
+        ...res.docs.map((item) => {
+          return { ...item.data(), id: item.id };
+        }),
+      ];
+      this.tipsSubject.next(
+        this.data.filter((item) => item.category === 'behavior')
+      );
+    });
+  }
+
+  getLongTermTips() {
+    const dbInstance = collection(this.firestore, 'tips');
+    getDocs(dbInstance).then((res) => {
+      this.data = [
+        ...res.docs.map((item) => {
+          return { ...item.data(), id: item.id };
+        }),
+      ];
+      this.tipsSubject.next(
+        this.data.filter((item) => item.category === 'long-term')
+      );
+    });
   }
 
   tips: ITip[] = [

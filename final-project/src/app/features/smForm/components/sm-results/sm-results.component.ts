@@ -1,10 +1,5 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  OnDestroy,
-  OnInit,
-} from '@angular/core';
-import { BehaviorSubject, catchError, of, Subscription, tap } from 'rxjs';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { ITip } from '../../interfaces/sm-interface';
 import { SmService } from '../../services/sm.service';
 
@@ -14,7 +9,7 @@ import { SmService } from '../../services/sm.service';
   styleUrls: ['./sm-results.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SmResultsComponent implements OnInit, OnDestroy {
+export class SmResultsComponent implements OnInit {
   constructor(private smService: SmService) {}
 
   tipsSubject: BehaviorSubject<ITip[]> = new BehaviorSubject([{}] as ITip[]);
@@ -26,8 +21,6 @@ export class SmResultsComponent implements OnInit, OnDestroy {
   submited = new BehaviorSubject(false);
   helpSuggestion = new BehaviorSubject(false);
   arr: ITip[] = [];
-
-  subscriptions: Subscription[] = [];
 
   ngOnInit(): void {
     this.markedSubject = this.smService.markedSubject;
@@ -55,25 +48,6 @@ export class SmResultsComponent implements OnInit, OnDestroy {
 
   public onClick(): void {
     this.helpRequest.next(true);
-    this.subscriptions.push(
-      this.smService
-        .getTips()
-        .pipe(
-          tap((res) => {
-            this.arr = res[0].filter((tip) => tip.category === 'long-term');
-            this.tipsSubject.next(this.arr);
-          }),
-          catchError((e) => {
-            console.log(e.message);
-            return of([]);
-          })
-        )
-        .subscribe()
-    );
-  }
-
-  ngOnDestroy(): void {
-    this.subscriptions.forEach((element) => element.unsubscribe());
-    this.result.next('');
+    this.smService.getLongTermTips();
   }
 }
