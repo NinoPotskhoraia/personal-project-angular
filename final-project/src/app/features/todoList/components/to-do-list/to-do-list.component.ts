@@ -1,8 +1,8 @@
-import { ChangeDetectionStrategy, OnDestroy } from '@angular/core';
+import { ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { BehaviorSubject, Subscription, tap } from 'rxjs';
-import { ITask, ITaskValue } from '../../interfaces/to-do-list-interface';
+import { BehaviorSubject, Subscription } from 'rxjs';
+import { ITask } from '../../interfaces/to-do-list-interface';
 import { ToDoListService } from '../../services/to-do-list.service';
 
 @Component({
@@ -11,13 +11,16 @@ import { ToDoListService } from '../../services/to-do-list.service';
   styleUrls: ['./to-do-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ToDoListComponent implements OnDestroy {
+export class ToDoListComponent implements OnInit {
   constructor(private todoService: ToDoListService) {}
+  ngOnInit(): void {
+    this.tasksSubject = this.todoService.tasksSubject;
+  }
 
   subscriptions: Subscription[] = [];
 
   description = new FormControl('', Validators.required);
-  tasksSubject: BehaviorSubject<ITask[]> = new BehaviorSubject([] as ITask[]);
+  tasksSubject: BehaviorSubject<any[]> = new BehaviorSubject([] as any[]);
   completedTasks: BehaviorSubject<ITask[]> = new BehaviorSubject([] as ITask[]);
   tasksArr: ITask[] = [];
   selectedTaskId: BehaviorSubject<number> = new BehaviorSubject(0);
@@ -29,19 +32,10 @@ export class ToDoListComponent implements OnDestroy {
   }
 
   public onAddClick() {
-    this.subscriptions.push(
-      this.todoService
-        .postTask({ description: this.desc } as ITaskValue)
-        .subscribe()
-    );
+    this.todoService.postTask({ description: this.desc });
 
     setTimeout(() => {
-      this.subscriptions.push(
-        this.todoService
-          .getTasks()
-          .pipe(tap((res) => this.tasksSubject.next(res)))
-          .subscribe()
-      );
+      this.todoService.getTasks();
 
       this.description.reset();
       this.showPercent.next(false);
@@ -54,34 +48,21 @@ export class ToDoListComponent implements OnDestroy {
   }
 
   public update(): void {
-    let updatedTask = { description: this.desc } as ITask;
-    this.subscriptions.push(
-      this.todoService
-        .updateTask(updatedTask as ITask, this.selectedTaskId.value)
-        .subscribe()
-    );
+    let updatedTask = { description: this.desc };
+
+    this.todoService.updateTask(updatedTask, this.selectedTaskId.value);
     setTimeout(() => {
-      this.subscriptions.push(
-        this.todoService
-          .getTasks()
-          .pipe(tap((res) => this.tasksSubject.next(res)))
-          .subscribe()
-      );
+      this.todoService.getTasks();
       this.description.reset();
       this.updating.next(false);
     }, 400);
   }
 
   public delete(id: number): void {
-    this.todoService.deleteTask(id).subscribe();
+    this.todoService.deleteTask(id);
     setTimeout(() => {
-      this.subscriptions.push(
-        this.todoService
-          .getTasks()
-          .pipe(tap((res) => this.tasksSubject.next(res)))
-          .subscribe()
-      );
-    }, 100);
+      this.todoService.getTasks();
+    }, 400);
   }
 
   public complete(task: ITask): void {
@@ -96,14 +77,10 @@ export class ToDoListComponent implements OnDestroy {
       ) {
         this.getStatus();
       }
-    }, 200);
+    }, 600);
   }
 
   public getStatus(): void {
     this.showPercent.next(true);
-  }
-
-  ngOnDestroy(): void {
-    this.subscriptions.forEach((element) => element.unsubscribe());
   }
 }

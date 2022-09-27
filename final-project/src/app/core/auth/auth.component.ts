@@ -1,11 +1,6 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  OnDestroy,
-  OnInit,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { UserService } from './services/user.service';
-import { BehaviorSubject, Subscription, tap } from 'rxjs';
+import { BehaviorSubject, Subscription } from 'rxjs';
 import { IUser } from './interfaces/user-interface';
 import { ILoginData } from './interfaces/login-interface';
 
@@ -32,41 +27,11 @@ export class AuthComponent implements OnInit {
   }
 
   public onRegister(data: IUser): void {
-    // this.subscriptions.push(
-    //   this.userService
-    //     .registerUser(data)
-    //     .pipe(
-    //       tap((res) => {
-    //         if (res) {
-    //           this.loginModeOn.next(true);
-    //         }
-    //       })
-    //     )
-    //     .subscribe()
-    // );
     this.userService.registerUser(data);
     this.registerModeOn.next(false);
   }
 
   public onLogin(loginData: ILoginData): void {
-    // this.subscriptions.push(
-    //   this.userService
-    //     .authenticate(loginData)
-    //     .pipe(
-    //       tap((res) => {
-    //         if (res) {
-    //           this.userService.logIn(res);
-    //           this.router.navigateByUrl('/hero');
-    //           return;
-    //         }
-    //       })
-    //     )
-    //     .subscribe()
-    // );
     this.userService.authenticate(loginData);
   }
-
-  // ngOnDestroy(): void {
-  //   this.subscriptions.forEach((element) => element.unsubscribe());
-  // }
 }
