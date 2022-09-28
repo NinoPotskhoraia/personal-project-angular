@@ -32,58 +32,66 @@ export class SmService {
 
   getMoodTips() {
     const dbInstance = collection(this.firestore, 'tips');
-    getDocs(dbInstance).then((res) => {
-      this.data = [
-        ...res.docs.map((item) => {
-          return { ...item.data(), id: item.id };
-        }),
-      ];
-      this.tipsSubject.next(
-        this.data.filter((item) => item.category === 'mood')
-      );
-    });
+    getDocs(dbInstance)
+      .then((res) => {
+        this.data = [
+          ...res.docs.map((item) => {
+            return { ...item.data(), id: item.id };
+          }),
+        ];
+        this.tipsSubject.next(
+          this.data.filter((item) => item.category === 'mood')
+        );
+      })
+      .catch((err) => console.log(err.message));
   }
 
   getphysicalDiscomfortTips() {
     const dbInstance = collection(this.firestore, 'tips');
-    getDocs(dbInstance).then((res) => {
-      this.data = [
-        ...res.docs.map((item) => {
-          return { ...item.data(), id: item.id };
-        }),
-      ];
-      this.tipsSubject.next(
-        this.data.filter((item) => item.category === 'physical-discomfort')
-      );
-    });
+    getDocs(dbInstance)
+      .then((res) => {
+        this.data = [
+          ...res.docs.map((item) => {
+            return { ...item.data(), id: item.id };
+          }),
+        ];
+        this.tipsSubject.next(
+          this.data.filter((item) => item.category === 'physical-discomfort')
+        );
+      })
+      .catch((err) => console.log(err.message));
   }
 
   getbehaviorTips() {
     const dbInstance = collection(this.firestore, 'tips');
-    getDocs(dbInstance).then((res) => {
-      this.data = [
-        ...res.docs.map((item) => {
-          return { ...item.data(), id: item.id };
-        }),
-      ];
-      this.tipsSubject.next(
-        this.data.filter((item) => item.category === 'behavior')
-      );
-    });
+    getDocs(dbInstance)
+      .then((res) => {
+        this.data = [
+          ...res.docs.map((item) => {
+            return { ...item.data(), id: item.id };
+          }),
+        ];
+        this.tipsSubject.next(
+          this.data.filter((item) => item.category === 'behavior')
+        );
+      })
+      .catch((err) => console.log(err.message));
   }
 
   getLongTermTips() {
     const dbInstance = collection(this.firestore, 'tips');
-    getDocs(dbInstance).then((res) => {
-      this.data = [
-        ...res.docs.map((item) => {
-          return { ...item.data(), id: item.id };
-        }),
-      ];
-      this.tipsSubject.next(
-        this.data.filter((item) => item.category === 'long-term')
-      );
-    });
+    getDocs(dbInstance)
+      .then((res) => {
+        this.data = [
+          ...res.docs.map((item) => {
+            return { ...item.data(), id: item.id };
+          }),
+        ];
+        this.tipsSubject.next(
+          this.data.filter((item) => item.category === 'long-term')
+        );
+      })
+      .catch((err) => console.log(err.message));
   }
 
   tips: ITip[] = [

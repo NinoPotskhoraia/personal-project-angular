@@ -19,6 +19,7 @@ export class UserService {
       () => {
         localStorage.removeItem('token');
         this.router.navigateByUrl('auth');
+        this.loggedInSubject.next(false);
       },
       (err) => {
         alert(err.message);

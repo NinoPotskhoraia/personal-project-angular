@@ -65,7 +65,6 @@ export class PAFormComponent implements OnInit {
     this.aerobicsForm.reset();
     this.resistanceForm.reset();
     this.flexibilityForm.reset();
-    console.log(this.aerobicsForm);
   }
 
   public onAddClick(): void {

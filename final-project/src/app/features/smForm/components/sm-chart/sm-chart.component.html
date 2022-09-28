@@ -19,11 +19,13 @@
       <button (click)="onMoodClick()">
         Get Useful tips for mood regulation:
       </button>
+
       <ng-container *ngIf="showMoodTips | async">
         <div class="tips">
           <ul *ngFor="let tip of tipsSubject | async">
             <li>{{ tip.body }}</li>
           </ul>
+          <button (click)="hideMoodTips()">Hide</button>
         </div>
       </ng-container>
     </div>
@@ -55,6 +57,7 @@
           <ul *ngFor="let tip of tipsSubject | async">
             <li>{{ tip.body }}</li>
           </ul>
+          <button (click)="hidePhysTips()">Hide</button>
         </div>
       </ng-container>
     </div>
@@ -94,6 +97,7 @@
           <ul *ngFor="let tip of tipsSubject | async">
             <li>{{ tip.body }}</li>
           </ul>
+          <button (click)="hideBehaviorTips()">Hide</button>
         </div>
       </ng-container>
     </div>

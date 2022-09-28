@@ -3,104 +3,102 @@
 @import "../../../../styles/media-queries";
 
 header {
-    background-color:$primary-color;
-    padding:1.7em 3em;
+  background-color: $primary-color;
+  padding: 1.7em 3em;
 
-    
-        .affirmation{
-            font-family:$primary-font-family;
-            border-radius: 5px;
-            border-width:1.5px;
-            box-shadow: 5px 7px 32px 1px $secondary-color;
-            font-size: 20px;
-        }
+  .affirmation {
+    font-family: $primary-font-family;
+    border-radius: 5px;
+    border-width: 1.5px;
+    box-shadow: 5px 7px 32px 1px $secondary-color;
+    font-size: 20px;
+  }
 
-        .affirm-text{
-            color:$secondary-color;
-            letter-spacing: 0.5px;
-            max-width:600px;
-            text-align: center;
-            font-size:20px;
-            font-style: italic;
-        }
-
-    
+  .affirm-text {
+    color: $secondary-color;
+    letter-spacing: 0.5px;
+    max-width: 600px;
+    text-align: center;
+    font-size: 20px;
+    font-style: italic;
+  }
 }
 
-@media (max-width:$tablet-width){
-  header{
-    padding:0.5em 1em;
-    width:$tablet-width;
-    margin:0;
+@media (max-width: $tablet-width) {
+  header {
+    padding: 0.5em 1em;
+    width: $tablet-width;
+    margin: 0;
     overflow: hidden;
 
-    nav{
-        max-width:$tablet-width;
-        margin-right:0;
-        ul{
-            flex-direction: column;
-            justify-content: center;
-            max-width: 600px;
-            margin:0 auto;
+    nav {
+      max-width: $tablet-width;
+      margin-right: 0;
+      ul {
+        flex-direction: column;
+        justify-content: center;
+        max-width: 600px;
+        margin: 0 auto;
 
-            .affirm{
-                max-width:300px;
-                margin-bottom:5px;
-               
+        .affirm {
+          max-width: 300px;
+          margin-bottom: 5px;
 
-            .affirmation{
-                font-size: 15px;
-                margin-right:0;
-            }
+          .affirmation {
+            font-size: 15px;
+            margin-right: 0;
+          }
 
-            .affirm-text{
-                font-size:15px;
-                max-width:300px;
-            }
+          .affirm-text {
+            font-size: 15px;
+            max-width: 300px;
+          }
         }
 
-            .log-in,
-            .log-out{
-                margin:0;
-            }
+        .log-in,
+        .log-out {
+          margin: 0;
         }
+      }
     }
   }
 }
 
-@media (max-width:$mobile-width){
-header{
-    padding:10px;
-    width:$mobile-width;
-    margin:0;
+@media (max-width: $mobile-width) {
+  header {
+    padding: 10px;
+    width: $mobile-width;
+    margin: 0;
     overflow: hidden;
 
-    nav{
-        max-width:$mobile-width;
-        ul{
+    nav {
+      max-width: $mobile-width;
+      ul {
+        max-width: 300px;
+
+        .affirm {
+          max-width: 300px;
+          margin-bottom: 5px;
+
+          .affirmation {
+            font-size: 15px;
+            margin-right: 0;
+          }
+
+          .affirm-text {
+            font-size: 15px;
             max-width: 300px;
-
-            .affirm{
-                max-width:300px;
-                margin-bottom:5px;
-               
-
-            .affirmation{
-                font-size: 15px;
-                margin-right:0;
-            }
-
-            .affirm-text{
-                font-size:15px;
-                max-width:300px;
-            }
+          }
+        }
+        button {
+          border: none;
         }
 
-            .log-in,
-            .log-out{
-                margin:0;
-            }
+        .log-in,
+        .log-out {
+          margin: 0;
         }
+      }
     }
   }
 }

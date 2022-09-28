@@ -24,6 +24,15 @@
         </ng-template>
       </div>
 
+      <li *ngIf="loggedIn | async">
+        <a routerLink="/todo">To Do List</a>
+      </li>
+      <li *ngIf="loggedIn | async">
+        <a routerLink="/pa">PA Log</a>
+      </li>
+      <li *ngIf="loggedIn | async">
+        <a routerLink="/sm">SM Chart</a>
+      </li>
       <li *ngIf="loggedIn | async; else login" (click)="logout()">
         <button class="log-out">Log out</button>
       </li>

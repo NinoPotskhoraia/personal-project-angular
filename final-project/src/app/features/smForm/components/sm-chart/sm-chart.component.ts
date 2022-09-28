@@ -109,4 +109,19 @@ export class SmChartComponent implements OnInit {
     this.physForm.reset();
     this.behaviorForm.reset();
   }
+
+  public hideMoodTips() {
+    this.tipsSubject.next([]);
+    this.showMoodTips.next(false);
+  }
+
+  public hidePhysTips() {
+    this.tipsSubject.next([]);
+    this.showDiscomfortTips.next(false);
+  }
+
+  public hideBehaviorTips() {
+    this.tipsSubject.next([]);
+    this.showBehaviorTips.next(false);
+  }
 }

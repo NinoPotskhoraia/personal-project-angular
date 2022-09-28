@@ -35,14 +35,16 @@ export class ToDoListService {
 
   getTasks() {
     const dbInstance = collection(this.firestore, 'tasks');
-    getDocs(dbInstance).then((res) => {
-      this.data = [
-        ...res.docs.map((item) => {
-          return { ...item.data(), id: item.id };
-        }),
-      ];
-      this.tasksSubject.next(this.data);
-    });
+    getDocs(dbInstance)
+      .then((res) => {
+        this.data = [
+          ...res.docs.map((item) => {
+            return { ...item.data(), id: item.id };
+          }),
+        ];
+        this.tasksSubject.next(this.data);
+      })
+      .catch((err) => console.log(err.message));
   }
 
   updateTask(updatedTask: object, id: number) {
